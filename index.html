@@ -8,64 +8,57 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
 html,body{height:100%;}
-body{font-family:'DM Sans',sans-serif;background:#0A0A0F;color:white;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;overflow:hidden;position:relative;}
+body{font-family:'DM Sans',sans-serif;background:#0A0A0F;color:white;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;position:relative;}
 .bg-glow{position:fixed;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0;}
-.glow-1{width:500px;height:500px;background:rgba(37,99,235,0.18);top:-100px;left:-100px;}
-.glow-2{width:400px;height:400px;background:rgba(124,58,237,0.15);bottom:-80px;right:-80px;}
-.dots{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
-.dot{position:absolute;border-radius:50%;background:rgba(255,255,255,0.06);animation:float linear infinite;}
-@keyframes float{from{transform:translateY(100vh);opacity:0;}10%{opacity:1;}90%{opacity:1;}to{transform:translateY(-100px);opacity:0;}}
-.container{position:relative;z-index:1;max-width:600px;width:100%;text-align:center;}
-.logo{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;letter-spacing:-0.5px;margin-bottom:36px;display:block;}
+.glow-1{width:300px;height:300px;background:rgba(37,99,235,0.18);top:-60px;left:-60px;}
+.glow-2{width:250px;height:250px;background:rgba(124,58,237,0.15);bottom:-40px;right:-40px;}
+.container{position:relative;z-index:1;max-width:480px;width:100%;text-align:center;padding:8px;}
+.logo{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;letter-spacing:-0.5px;margin-bottom:12px;display:block;}
 .logo span{color:#3B82F6;}
-.badge{display:inline-flex;align-items:center;gap:7px;background:rgba(37,99,235,0.15);border:1px solid rgba(37,99,235,0.3);color:#93C5FD;font-size:12px;font-weight:600;padding:6px 16px;border-radius:20px;margin-bottom:24px;letter-spacing:.5px;}
-.badge-dot{width:6px;height:6px;border-radius:50%;background:#3B82F6;animation:pulse 2s infinite;}
+.badge{display:inline-flex;align-items:center;gap:6px;background:rgba(37,99,235,0.15);border:1px solid rgba(37,99,235,0.3);color:#93C5FD;font-size:11px;font-weight:600;padding:4px 12px;border-radius:20px;margin-bottom:12px;}
+.badge-dot{width:5px;height:5px;border-radius:50%;background:#3B82F6;animation:pulse 2s infinite;}
 @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.4;}}
-h1{font-family:'Syne',sans-serif;font-size:clamp(30px,7vw,52px);font-weight:800;line-height:1.06;letter-spacing:-2px;margin-bottom:18px;}
+h1{font-family:'Syne',sans-serif;font-size:26px;font-weight:800;line-height:1.1;letter-spacing:-1px;margin-bottom:10px;}
 h1 .hl{background:linear-gradient(135deg,#3B82F6,#8B5CF6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.sub{font-size:clamp(14px,2.5vw,17px);color:#9090B0;line-height:1.65;margin-bottom:36px;font-weight:300;}
-.countdown{display:flex;gap:10px;justify-content:center;margin-bottom:36px;flex-wrap:wrap;}
-.cd-item{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:16px 18px;min-width:72px;}
-.cd-num{font-family:'Syne',sans-serif;font-size:32px;font-weight:800;color:white;line-height:1;margin-bottom:4px;}
-.cd-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#6B6B8A;}
-.form-wrap{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:28px;margin-bottom:24px;}
-.form-title{font-family:'Syne',sans-serif;font-size:17px;font-weight:700;margin-bottom:6px;}
-.form-sub{font-size:13px;color:#6B6B8A;margin-bottom:18px;line-height:1.5;}
-.input-row{display:flex;gap:10px;flex-wrap:wrap;}
-.email-input{flex:1;min-width:200px;background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.1);border-radius:12px;padding:13px 16px;font-family:'DM Sans',sans-serif;font-size:14px;color:white;outline:none;transition:border-color .2s;}
+.sub{font-size:13px;color:#9090B0;line-height:1.55;margin-bottom:14px;font-weight:300;}
+.features{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-bottom:14px;}
+.feat{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:20px;padding:4px 10px;font-size:11px;color:#9090B0;}
+.countdown{display:flex;gap:6px;justify-content:center;margin-bottom:12px;flex-wrap:wrap;}
+.cd-item{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:10px 12px;min-width:60px;}
+.cd-num{font-family:'Syne',sans-serif;font-size:24px;font-weight:800;color:white;line-height:1;margin-bottom:3px;}
+.cd-label{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#6B6B8A;}
+.proof{font-size:12px;color:#6B6B8A;margin-bottom:12px;}
+.proof strong{color:white;}
+.form-wrap{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:18px;margin-bottom:14px;}
+.form-title{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;margin-bottom:4px;}
+.form-sub{font-size:12px;color:#6B6B8A;margin-bottom:12px;line-height:1.4;}
+.email-input{width:100%;background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.1);border-radius:10px;padding:11px 14px;font-family:'DM Sans',sans-serif;font-size:14px;color:white;outline:none;margin-bottom:8px;}
 .email-input:focus{border-color:#3B82F6;}
 .email-input::placeholder{color:#6B6B8A;}
-.submit-btn{background:linear-gradient(135deg,#2563EB,#7C3AED);color:white;border:none;border-radius:12px;padding:13px 24px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;white-space:nowrap;}
-.privacy{font-size:11px;color:#6B6B8A;margin-top:10px;}
-.success{display:none;background:rgba(5,150,105,0.1);border:1px solid rgba(5,150,105,0.25);border-radius:12px;padding:16px;margin-top:12px;}
+.submit-btn{width:100%;background:linear-gradient(135deg,#2563EB,#7C3AED);color:white;border:none;border-radius:10px;padding:12px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;}
+.privacy{font-size:10px;color:#6B6B8A;margin-top:8px;}
+.success{display:none;background:rgba(5,150,105,0.1);border:1px solid rgba(5,150,105,0.25);border-radius:10px;padding:12px;margin-top:8px;}
 .success.show{display:block;}
-.success-title{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:#10B981;margin-bottom:4px;}
-.success-text{font-size:13px;color:#6EE7B7;}
-.features{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:28px;}
-.feat{display:flex;align-items:center;gap:5px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:20px;padding:6px 12px;font-size:12px;color:#9090B0;}
-.social-row{display:flex;gap:10px;justify-content:center;margin-bottom:20px;}
-.social-link{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:8px 16px;font-size:13px;font-weight:500;color:#9090B0;text-decoration:none;cursor:pointer;transition:all .2s;}
-.social-link:hover{color:white;background:rgba(255,255,255,0.09);}
-.footer{font-size:12px;color:#3B3B52;}
-.proof{display:flex;align-items:center;gap:8px;justify-content:center;margin-bottom:28px;}
-.proof-text{font-size:13px;color:#6B6B8A;}
-.proof-text strong{color:white;}
-@media(max-width:480px){.form-wrap{padding:20px 16px;}.input-row{flex-direction:column;}.submit-btn{width:100%;}.cd-item{min-width:60px;padding:12px 10px;}.cd-num{font-size:26px;}}
+.success-title{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:#10B981;margin-bottom:3px;}
+.success-text{font-size:12px;color:#6EE7B7;}
+.social-row{display:flex;gap:8px;justify-content:center;margin-bottom:12px;}
+.social-link{display:flex;align-items:center;gap:5px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:8px 14px;font-size:12px;font-weight:500;color:#9090B0;text-decoration:none;}
+.social-link:hover{color:white;}
+.footer{font-size:11px;color:#3B3B52;}
 </style>
 </head>
 <body>
 <div class="bg-glow glow-1"></div>
 <div class="bg-glow glow-2"></div>
-<div class="dots" id="dots"></div>
 <div class="container">
 <span class="logo">Doc<span>Ready</span></span>
 <div class="badge"><div class="badge-dot"></div>LAUNCHING SOON</div>
-<h1>Any paper.<br>Any AI output.<br><span class="hl">Professional document.</span></h1>
+<h1>Any paper. Any AI output.<br><span class="hl">Professional document.</span></h1>
 <p class="sub">Take a photo of your handwritten notes. Paste what any AI assistant wrote for you. Speak it out loud. DocReady reads it, fills in what is missing, and formats it into a professional document in 60 seconds.</p>
 <div class="features">
-<div class="feat">📸 Photo of handwritten notes</div>
+<div class="feat">📸 Handwritten notes</div>
 <div class="feat">🎤 Voice input</div>
-<div class="feat">📄 Resume, contracts & more</div>
+<div class="feat">📄 Resume & contracts</div>
 <div class="feat">✍️ Online notarization</div>
 <div class="feat">⚡ 3-day free trial</div>
 </div>
@@ -75,14 +68,12 @@ h1 .hl{background:linear-gradient(135deg,#3B82F6,#8B5CF6);-webkit-background-cli
 <div class="cd-item"><div class="cd-num" id="cd-m">00</div><div class="cd-label">Minutes</div></div>
 <div class="cd-item"><div class="cd-num" id="cd-s">00</div><div class="cd-label">Seconds</div></div>
 </div>
-<div class="proof"><div class="proof-text"><strong id="count">0</strong> people already on the early access list</div></div>
+<div class="proof"><strong id="count">0</strong> people already on the early access list</div>
 <div class="form-wrap">
 <div class="form-title">🎉 Get early access + a free document on launch day</div>
 <div class="form-sub">Drop your email. When DocReady launches you get first access and your first document formatted completely free.</div>
-<div class="input-row">
 <input class="email-input" type="email" id="email" placeholder="Enter your email address" onkeydown="if(event.key==='Enter')sub()">
 <button class="submit-btn" onclick="sub()">Notify Me →</button>
-</div>
 <div class="privacy">🔒 No spam. No selling your email. Just a launch notification.</div>
 <div class="success" id="success">
 <div class="success-title">🎉 You are on the list!</div>
@@ -90,19 +81,18 @@ h1 .hl{background:linear-gradient(135deg,#3B82F6,#8B5CF6);-webkit-background-cli
 </div>
 </div>
 <div class="social-row">
-<a class="social-link" href="https://tiktok.com/@missyitsshejojofi" target="_blank">📱 Follow on TikTok</a>
-<a class="social-link" href="https://instagram.com/highlyfavoredbygod333" target="_blank">📷 Follow on Instagram</a>
+<a class="social-link" href="https://tiktok.com/@missyitsshejojofi" target="_blank">📱 TikTok</a>
+<a class="social-link" href="https://instagram.com/highlyfavoredbygod333" target="_blank">📷 Instagram</a>
 </div>
 <div class="footer">© 2026 DocReady — getformatflow.com</div>
 </div>
 <script>
-const dots=document.getElementById('dots');
-for(let i=0;i<15;i++){const d=document.createElement('div');d.className='dot';const s=Math.random()*6+3;d.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;animation-duration:${Math.random()*20+15}s;animation-delay:${Math.random()*15}s;`;dots.appendChild(d);}
 const LAUNCH=new Date();LAUNCH.setDate(LAUNCH.getDate()+14);
-function tick(){const now=new Date();const diff=LAUNCH-now;if(diff<=0){document.querySelector('.countdown').innerHTML='<div style="font-family:Syne,sans-serif;font-size:22px;font-weight:800;color:#10B981;">🚀 We Are Live!</div>';return;}document.getElementById('cd-d').textContent=String(Math.floor(diff/86400000)).padStart(2,'0');document.getElementById('cd-h').textContent=String(Math.floor(diff%86400000/3600000)).padStart(2,'0');document.getElementById('cd-m').textContent=String(Math.floor(diff%3600000/60000)).padStart(2,'0');document.getElementById('cd-s').textContent=String(Math.floor(diff%60000/1000)).padStart(2,'0');}
+function tick(){const now=new Date();const diff=LAUNCH-now;if(diff<=0){document.querySelector('.countdown').innerHTML='<div style="font-family:Syne,sans-serif;font-size:20px;font-weight:800;color:#10B981;">🚀 We Are Live!</div>';return;}document.getElementById('cd-d').textContent=String(Math.floor(diff/86400000)).padStart(2,'0');document.getElementById('cd-h').textContent=String(Math.floor(diff%86400000/3600000)).padStart(2,'0');document.getElementById('cd-m').textContent=String(Math.floor(diff%3600000/60000)).padStart(2,'0');document.getElementById('cd-s').textContent=String(Math.floor(diff%60000/1000)).padStart(2,'0');}
 tick();setInterval(tick,1000);
 let n=0;try{n=parseInt(localStorage.getItem('dr_n')||'0');}catch(e){}document.getElementById('count').textContent=n;
 function sub(){const e=document.getElementById('email');if(!e.value||!e.value.includes('@')){e.style.borderColor='#DC2626';setTimeout(()=>e.style.borderColor='',2000);return;}try{const arr=JSON.parse(localStorage.getItem('dr_emails')||'[]');if(!arr.includes(e.value)){arr.push(e.value);localStorage.setItem('dr_emails',JSON.stringify(arr));n++;localStorage.setItem('dr_n',n);document.getElementById('count').textContent=n;}}catch(ex){}document.getElementById('success').classList.add('show');e.value='';document.querySelector('.submit-btn').textContent='✅ You are in!';}
 </script>
 </body>
 </html>
+
