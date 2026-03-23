@@ -34,6 +34,12 @@ h1 .hl{background:linear-gradient(135deg,#3B82F6,#8B5CF6);-webkit-background-cli
 .cd-label{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#6B6B8A;}
 .trust-line{background:rgba(37,99,235,0.08);border:1px solid rgba(37,99,235,0.2);border-radius:10px;padding:10px 14px;margin-bottom:12px;font-size:11.5px;color:#93C5FD;font-weight:500;line-height:1.5;}
 .trust-line span{color:white;font-weight:600;}
+.structure-block{background:rgba(15,118,110,0.08);border:1px solid rgba(15,118,110,0.25);border-radius:12px;padding:14px 16px;margin-bottom:14px;text-align:left;}
+.structure-block h4{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:#5EEAD4;margin-bottom:10px;}
+.structure-block ul{list-style:none;}
+.structure-block ul li{font-size:11.5px;color:#9090B0;padding:3px 0;display:flex;align-items:center;gap:8px;line-height:1.4;}
+.structure-block ul li::before{content:'✓';color:#0F766E;font-weight:700;flex-shrink:0;}
+.structure-block .struct-note{font-size:11px;color:#6B6B8A;margin-top:8px;border-top:1px solid rgba(15,118,110,0.15);padding-top:8px;font-style:italic;}
 .form-wrap{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:18px;margin-bottom:14px;}
 .form-title{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;margin-bottom:4px;}
 .form-sub{font-size:12px;color:#6B6B8A;margin-bottom:12px;line-height:1.4;}
@@ -112,8 +118,8 @@ h1 .hl{background:linear-gradient(135deg,#3B82F6,#8B5CF6);-webkit-background-cli
 <div class="badge"><div class="badge-dot"></div>LAUNCHING SOON</div>
 <h1>Any paper.<br>Any AI output.<br><span class="hl">Professional document.</span></h1>
 <p class="tagline">Screenshot it. Snap it. Sync it.<br>However you capture it — we format it.</p>
-<p class="sub">Copy and paste what any AI assistant wrote for you. Speak it out loud. Take a photo of your handwritten notes. DocReady reads it, fills in what is missing, and formats it into a professional document in 60 seconds.</p>
-<p class="hook">From everyday resumes to business contracts and legal documents — if it needs to be professional, DocReady handles it.</p>
+<p class="sub">Copy and paste what any AI assistant wrote for you. Speak it out loud. Take a photo of your handwritten notes. DocReady asks for what's missing and builds the document with your input — then formats and structures your document in 60 seconds.</p>
+<p class="hook">From everyday resumes to business contracts and legal documents — if it needs to be professional, DocReady formats and structures your document.</p>
 <div class="features-wrap">
 <div class="feat-row">
 <div class="feat accent">📸 Screenshot it</div>
@@ -137,7 +143,17 @@ h1 .hl{background:linear-gradient(135deg,#3B82F6,#8B5CF6);-webkit-background-cli
 <div class="cd-item"><div class="cd-num" id="cd-m">00</div><div class="cd-label">Minutes</div></div>
 <div class="cd-item"><div class="cd-num" id="cd-s">00</div><div class="cd-label">Seconds</div></div>
 </div>
-<div class="trust-line">🛡️ <span>AI handles the formatting. You stay in control.</span> Every document is verified before it reaches you.</div>
+<div class="trust-line">🛡️ <span>AI handles the formatting. You control the outcome.</span> Every document is verified before submission.</div>
+<div class="structure-block">
+<h4>🔐 Built With Structure — Not Guesswork</h4>
+<ul>
+<li>AI assists with formatting — never replaces your judgment</li>
+<li>You provide and confirm all information</li>
+<li>Every document is reviewed before finalization</li>
+<li>No hidden edits or automatic submissions</li>
+</ul>
+<div class="struct-note">DocReady formats and structures your document. You stay in authority over every word.</div>
+</div>
 <div class="form-wrap">
 <div class="form-title">🎉 Get early access + a free document on launch day</div>
 <div class="form-sub">Drop your email. When DocReady launches you get first access and your first document formatted completely free.</div>
@@ -257,11 +273,11 @@ h1 .hl{background:linear-gradient(135deg,#3B82F6,#8B5CF6);-webkit-background-cli
 </div>
 <div class="hiw-step">
 <div class="hiw-num">3</div>
-<div class="hiw-text"><strong>Our AI reads your content</strong> — identifies the document type and asks smart questions to complete anything missing</div>
+<div class="hiw-text"><strong>DocReady asks for what is missing</strong> — builds the document with your input — you confirm everything before it is finalized</div>
 </div>
 <div class="hiw-step">
 <div class="hiw-num">4</div>
-<div class="hiw-text"><strong>Download your finished document</strong> — PDF, Word, or Google Docs — in 60 seconds or less</div>
+<div class="hiw-text"><strong>Download your finished document</strong> — PDF, Word, or Google Docs — verified and ready in 60 seconds or less</div>
 </div>
 </div>
 <div class="social-row">
@@ -279,3 +295,4 @@ function sub(){const e=document.getElementById('email');if(!e.value||!e.value.in
 </script>
 </body>
 </html>
+
