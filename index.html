@@ -23,25 +23,20 @@ h1 .hl{background:linear-gradient(135deg,#3B82F6,#8B5CF6);-webkit-background-cli
 .tagline{font-size:14px;font-weight:600;color:white;margin-bottom:6px;line-height:1.4;}
 .sub{font-size:12.5px;color:#9090B0;line-height:1.55;margin-bottom:8px;font-weight:300;}
 .hook{font-size:12px;color:#3B82F6;font-weight:600;margin-bottom:14px;font-style:italic;}
-/* FEATURE PILLS */
 .features-wrap{margin-bottom:14px;}
 .feat-row{display:flex;gap:5px;justify-content:center;flex-wrap:wrap;margin-bottom:5px;}
 .feat{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:20px;padding:4px 10px;font-size:11px;color:#9090B0;}
 .feat.accent{background:rgba(37,99,235,0.1);border-color:rgba(37,99,235,0.25);color:#93C5FD;}
 .feat-divider{font-size:10px;color:#3B3B52;text-align:center;margin:4px 0;letter-spacing:1px;}
-/* COUNTDOWN */
 .countdown{display:flex;gap:6px;justify-content:center;margin-bottom:12px;flex-wrap:wrap;}
 .cd-item{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:10px 12px;min-width:60px;}
 .cd-num{font-family:'Syne',sans-serif;font-size:24px;font-weight:800;color:white;line-height:1;margin-bottom:3px;}
 .cd-label{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#6B6B8A;}
-/* EMAIL */
-.proof{font-size:12px;color:#6B6B8A;margin-bottom:12px;}
-.proof strong{color:white;}
 .form-wrap{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:18px;margin-bottom:14px;}
 .form-title{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;margin-bottom:4px;}
 .form-sub{font-size:12px;color:#6B6B8A;margin-bottom:12px;line-height:1.4;}
 .email-input{width:100%;background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.1);border-radius:10px;padding:11px 14px;font-family:'DM Sans',sans-serif;font-size:14px;color:white;outline:none;margin-bottom:8px;}
-.email-input
+.email-input:focus{border-color:#3B82F6;}
 .email-input::placeholder{color:#6B6B8A;}
 .submit-btn{width:100%;background:linear-gradient(135deg,#2563EB,#7C3AED);color:white;border:none;border-radius:10px;padding:12px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;}
 .privacy{font-size:10px;color:#6B6B8A;margin-top:8px;}
@@ -49,13 +44,10 @@ h1 .hl{background:linear-gradient(135deg,#3B82F6,#8B5CF6);-webkit-background-cli
 .success.show{display:block;}
 .success-title{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:#10B981;margin-bottom:3px;}
 .success-text{font-size:12px;color:#6EE7B7;}
-/* DIVIDER */
 .divider{border:none;border-top:1px solid rgba(255,255,255,0.07);margin:20px 0;}
-/* PRICING */
 .pricing-header{margin-bottom:16px;}
 .pricing-header h2{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;margin-bottom:5px;letter-spacing:-0.5px;}
 .pricing-header p{font-size:12px;color:#9090B0;line-height:1.5;}
-/* FREE TRIAL */
 .free-card{background:linear-gradient(135deg,rgba(37,99,235,0.15),rgba(124,58,237,0.15));border:1px solid rgba(37,99,235,0.3);border-radius:14px;padding:16px;margin-bottom:10px;text-align:left;}
 .free-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(37,99,235,0.2);border:1px solid rgba(37,99,235,0.3);color:#93C5FD;font-size:9px;font-weight:700;padding:3px 10px;border-radius:20px;margin-bottom:8px;letter-spacing:1px;}
 .free-card h3{font-family:'Syne',sans-serif;font-size:15px;font-weight:800;margin-bottom:7px;}
@@ -63,7 +55,6 @@ h1 .hl{background:linear-gradient(135deg,#3B82F6,#8B5CF6);-webkit-background-cli
 .free-feats li{font-size:11.5px;color:#9090B0;padding:2px 0;display:flex;align-items:center;gap:5px;}
 .free-feats li::before{content:'✓';color:#3B82F6;font-weight:700;flex-shrink:0;}
 .free-note{font-size:11px;color:#6B6B8A;font-style:italic;border-top:1px solid rgba(255,255,255,0.08);padding-top:7px;margin-top:4px;}
-/* PRICE CARDS */
 .price-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:14px;margin-bottom:8px;text-align:left;position:relative;}
 .price-card.popular{background:rgba(37,99,235,0.15);border-color:rgba(37,99,235,0.4);}
 .price-card.unlimited{background:rgba(124,58,237,0.1);border-color:rgba(124,58,237,0.3);}
@@ -88,18 +79,15 @@ h1 .hl{background:linear-gradient(135deg,#3B82F6,#8B5CF6);-webkit-background-cli
 .price-card.unlimited .card-note{color:#C4B5FD;}
 .price-card.business .card-note{color:#FCA5A5;}
 .notary-value{display:inline-flex;align-items:center;gap:4px;background:rgba(217,119,6,0.15);border:1px solid rgba(217,119,6,0.3);color:#FCD34D;font-size:9px;font-weight:700;padding:2px 7px;border-radius:5px;margin-top:3px;}
-/* PAY PER USE */
 .ppu-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:14px;margin-bottom:10px;text-align:center;}
 .ppu-price{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:white;margin:5px 0;}
 .ppu-note{font-size:11.5px;color:#6B6B8A;line-height:1.5;}
-/* NO PRESSURE */
 .no-pressure{background:rgba(5,150,105,0.07);border:1px solid rgba(5,150,105,0.18);border-radius:12px;padding:14px;margin-bottom:14px;text-align:left;}
 .no-pressure h4{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:#10B981;margin-bottom:7px;}
 .no-pressure ul{list-style:none;}
 .no-pressure ul li{font-size:11.5px;color:#6EE7B7;padding:2px 0;display:flex;align-items:center;gap:5px;}
 .no-pressure ul li::before{content:'✓';color:#10B981;font-weight:700;}
 .no-pressure-note{font-size:11.5px;color:#10B981;font-weight:600;margin-top:7px;border-top:1px solid rgba(5,150,105,0.2);padding-top:7px;}
-/* HOW IT WORKS */
 .hiw{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:14px;margin-bottom:14px;text-align:left;}
 .hiw h4{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:white;margin-bottom:10px;text-align:center;}
 .hiw-step{display:flex;align-items:flex-start;gap:9px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.04);}
@@ -107,7 +95,6 @@ h1 .hl{background:linear-gradient(135deg,#3B82F6,#8B5CF6);-webkit-background-cli
 .hiw-num{width:20px;height:20px;border-radius:50%;background:#2563EB;color:white;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
 .hiw-text{font-size:11.5px;color:#9090B0;line-height:1.5;}
 .hiw-text strong{color:white;}
-/* SOCIAL */
 .social-row{display:flex;gap:8px;justify-content:center;margin-bottom:10px;}
 .social-link{display:flex;align-items:center;gap:5px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:7px 14px;font-size:12px;font-weight:500;color:#9090B0;text-decoration:none;}
 .social-link:hover{color:white;}
@@ -119,190 +106,173 @@ h1 .hl{background:linear-gradient(135deg,#3B82F6,#8B5CF6);-webkit-background-cli
 <div class="bg-glow glow-1"></div>
 <div class="bg-glow glow-2"></div>
 <div class="container">
-  <!-- HERO -->
 <span class="logo">Doc<span>Ready</span>™</span>
-  <div class="badge"><div class="badge-dot"></div>LAUNCHING SOON</div>
-  <h1>Any paper.<br>Any AI output.<br><span class="hl">Professional document.</span></h1>
-  <p class="tagline">Screenshot it. Snap it. Sync it.<br>However you capture it — we format it.</p>
-  <p class="sub">Paste what any AI assistant wrote for you. Speak it out loud. Take a photo of your handwritten notes. DocReady reads it, fills in what is missing, and formats it into a professional document in 60 seconds.</p>
-  <p class="hook">From everyday resumes to business contracts and legal documents — if it needs to be professional, DocReady handles it.</p>
-  <!-- FEATURE PILLS — ROW 1: HOW YOU INPUT -->
-  <div class="features-wrap">
-    <div class="feat-row">
-      <div class="feat accent">📸 Screenshot it</div>
-      <div class="feat accent">🤳 Snap a photo</div>
-      <div class="feat accent">🔄 Sync your device</div>
-      <div class="feat accent">🎤 Speak it</div>
-    </div>
-    <div class="feat-divider">— WE FORMAT IT INTO —</div>
-    <div class="feat-row">
-      <div class="feat">📄 Resume & Cover Letters</div>
-      <div class="feat">⚖️ Legal Documents</div>
-      <div class="feat">📝 Business Plans & Contracts</div>
-      <div class="feat">✍️ Online Notarization</div>
-      <div class="feat">📚 Books & Scripts</div>
-      <div class="feat">➕ And More</div>
-    </div>
-  </div>
-  <!-- COUNTDOWN -->
-  <div class="countdown">
-    <div class="cd-item"><div class="cd-num" id="cd-d">14</div><div class="cd-label">Days</div></div>
-    <div class="cd-item"><div class="cd-num" id="cd-h">00</div><div class="cd-label">Hours</div></div>
-    <div class="cd-item"><div class="cd-num" id="cd-m">00</div><div class="cd-label">Minutes</div></div>
-    <div class="cd-item"><div class="cd-num" id="cd-s">00</div><div class="cd-label">Seconds</div></div>
-  </div>
-  <!-- EMAIL SIGNUP -->
-  <div class="proof"><strong id="count">0</strong> people already on the early access list</div>
-  <div class="form-wrap">
-    <div class="form-title">🎉 Get early access + a free document on launch day</div>
-    <div class="form-sub">Drop your email. When DocReady launches you get first access and your first document formatted completely free.</div>
-    <input class="email-input" type="email" id="email" placeholder="Enter your email address" onkeydown="if(event.key==='Enter')sub()">
-    <button class="submit-btn" onclick="sub()">Notify Me →</button>
-    <div class="privacy">🔒 No spam. No selling your email. Just a launch notification.</div>
-    <div class="success" id="success">
-      <div class="success-title">🎉 You are on the list!</div>
-      <div class="success-text">We will email you the moment DocReady goes live. Your free document is waiting.</div>
-    </div>
-  </div>
-  <hr class="divider">
-  <!-- PRICING HEADER -->
-  <div class="pricing-header">
-    <h2>Choose the Way You Create Documents</h2>
-    <p>Write it your way. We turn it into a finished, professional document. Simple pricing — start free, upgrade anytime, or pay per document. No pressure. No commitment.</p>
-  </div>
-  <!-- FREE TRIAL -->
-  <div class="free-card">
-    <div class="free-badge">🎁 START FREE — NO RISK</div>
-    <h3>3-Day Free Trial</h3>
-    <ul class="free-feats">
-      <li>2 documents per day during your trial</li>
-      <li>Access to all document types</li>
-      <li>AI-assisted formatting and smart completion</li>
-      <li>Full experience — no credit card needed</li>
-    </ul>
-    <div class="free-note">👉 Screenshot it. Snap it. Sync it. However you capture it — we format it.</div>
-  </div>
-  <!-- STARTER -->
-  <div class="price-card">
-    <div class="card-tier">🟢 Starter</div>
-    <div class="card-price"><span>$</span>9.99</div>
-    <div class="card-period">per month — for simple, occasional use</div>
-    <ul class="card-feats">
-      <li>5 documents per month</li>
-      <li>Up to 10 pages each</li>
-      <li>Basic templates</li>
-      <li>PDF downloads</li>
-      <li>Standard formatting</li>
-    </ul>
-    <div class="card-note">👉 Perfect if you just need a few documents done right</div>
-  </div>
-  <!-- PRO -->
-  <div class="price-card popular">
-    <div class="pop-tag">⭐ MOST POPULAR</div>
-    <div class="card-tier">🔵 Pro</div>
-    <div class="card-price"><span>$</span>19.99</div>
-    <div class="card-period">per month — for consistent, everyday use</div>
-    <ul class="card-feats">
-      <li>15 documents per month</li>
-      <li>Up to 25 pages each</li>
-      <li>Full template library</li>
-      <li>PDF + Word + Google Docs</li>
-      <li>AI voice input + smart completion</li>
-      <li>Document history and storage</li>
-      <li>1 FREE notarization per month (Value $25+)</li>
-    </ul>
-    <div class="card-note">👉 Everything you need to create professional documents consistently</div>
-  </div>
-  <!-- UNLIMITED -->
-  <div class="price-card unlimited">
-    <div class="card-tier">🟣 Unlimited</div>
-    <div class="card-price"><span>$</span>29.99</div>
-    <div class="card-period">per month — for users who do not want limits</div>
-    <ul class="card-feats">
-      <li>Unlimited documents — no restrictions</li>
-      <li>Unlimited pages</li>
-      <li>Full system access — all templates and formats</li>
-      <li>AI voice + smart completion</li>
-      <li>Document history and storage</li>
-      <li>2 notarizations per month included</li>
-      <li>eBook and advanced formatting tools</li>
-      <li>Upload your own Canva template</li>
-    </ul>
-    <div class="card-note">👉 Create without restrictions — no limits, no interruptions</div>
-  </div>
-  <!-- BUSINESS -->
-  <div class="price-card business">
-    <div class="best-tag">⭐ BEST FOR BUSINESSES & TEAMS</div>
-    <div class="card-tier">🔴 Business</div>
-    <div class="card-price"><span>$</span>59.99</div>
-    <div class="card-period">per month — built for professionals, teams and high-volume users</div>
-    <ul class="card-feats">
-      <li>Unlimited documents — no restrictions</li>
-      <li>Full system access — everything unlocked</li>
-      <li>Team access — up to 3 users</li>
-      <li>Custom branding on all documents</li>
-      <li>Priority processing — no waiting</li>
-      <li>AI voice + smart completion</li>
-      <li>Full legal document library — 50+ templates</li>
-      <li>Books, scripts, and long document formatting</li>
-      <li>Multi-format downloads — PDF, Word, Google Docs</li>
-      <li>API access for advanced integrations</li>
-      <li>Up to $75 per month in notary credits</li>
-    </ul>
-    <div class="notary-value">💼 Includes up to $75/month in notary value</div>
-    <div class="card-note">👉 Designed for business owners, landlords, and professionals who rely on documents daily</div>
-  </div>
-  <!-- PAY PER USE -->
-  <div class="ppu-card">
-    <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#6B6B8A;margin-bottom:4px;">💵 NOT READY FOR A PLAN?</div>
-    <div class="ppu-price">$2.99 <span style="font-size:13px;font-weight:400;color:#6B6B8A;">per document</span></div>
-    <div class="ppu-note">No subscription required • Up to 15 pages per document<br>Available after your free trial ends • No commitment</div>
-  </div>
-  <!-- NO PRESSURE -->
-  <div class="no-pressure">
-    <h4>🔒 No Pressure. No Commitment.</h4>
-    <ul>
-      <li>Start with your 3-day free trial</li>
-      <li>Upgrade anytime — cancel anytime</li>
-      <li>Or pay per document when needed</li>
-    </ul>
-    <div class="no-pressure-note">👉 We meet you where you are.</div>
-  </div>
-  <!-- HOW IT WORKS -->
-  <div class="hiw">
-    <h4>⚡ How It Works — 4 Simple Steps</h4>
-    <div class="hiw-step">
-      <div class="hiw-num">1</div>
-      <div class="hiw-text"><strong>Screenshot it. Snap it. Sync it. Speak it.</strong> — However you capture your content on any device — we accept it</div>
-    </div>
-    <div class="hiw-step">
-      <div class="hiw-num">2</div>
-      <div class="hiw-text"><strong>Sign in from anywhere</strong> — phone, library computer, laptop — your documents and history follow you to every device</div>
-    </div>
-    <div class="hiw-step">
-      <div class="hiw-num">3</div>
-      <div class="hiw-text"><strong>Our AI reads your content</strong> — identifies the document type and asks smart questions to complete anything missing</div>
-    </div>
-    <div class="hiw-step">
-      <div class="hiw-num">4</div>
-      <div class="hiw-text"><strong>Download your finished document</strong> — PDF, Word, or Google Docs — in 60 seconds or less</div>
-    </div>
-  </div>
-  <!-- SOCIAL LINKS -->
-  <div class="social-row">
-    <a class="social-link" href="https://tiktok.com/@missyitsshejojofi" target="_blank">📱 TikTok</a>
-    <a class="social-link" href="https://instagram.com/highlyfavoredbygod333" target="_blank">📷 Instagram</a>
-  </div>
-  <div class="footer">© 2026 DocReady™ — getformatflow.com</div>
-  <div class="trademark">DocReady is a trademark. All rights reserved.</div>
+<div class="badge"><div class="badge-dot"></div>LAUNCHING SOON</div>
+<h1>Any paper.<br>Any AI output.<br><span class="hl">Professional document.</span></h1>
+<p class="tagline">Screenshot it. Snap it. Sync it.<br>However you capture it — we format it.</p>
+<p class="sub">Paste what any AI assistant wrote for you. Speak it out loud. Take a photo of your handwritten notes. DocReady reads it, fills in what is missing, and formats it into a professional document in 60 seconds.</p>
+<p class="hook">From everyday resumes to business contracts and legal documents — if it needs to be professional, DocReady handles it.</p>
+<div class="features-wrap">
+<div class="feat-row">
+<div class="feat accent">📸 Screenshot it</div>
+<div class="feat accent">🤳 Snap a photo</div>
+<div class="feat accent">🔄 Sync your device</div>
+<div class="feat accent">🎤 Speak it</div>
+</div>
+<div class="feat-divider">— WE FORMAT IT INTO —</div>
+<div class="feat-row">
+<div class="feat">📄 Resume & Cover Letters</div>
+<div class="feat">⚖️ Legal Documents</div>
+<div class="feat">📝 Business Plans & Contracts</div>
+<div class="feat">✍️ Online Notarization</div>
+<div class="feat">📚 Books & Scripts</div>
+<div class="feat">➕ And More</div>
+</div>
+</div>
+<div class="countdown">
+<div class="cd-item"><div class="cd-num" id="cd-d">14</div><div class="cd-label">Days</div></div>
+<div class="cd-item"><div class="cd-num" id="cd-h">00</div><div class="cd-label">Hours</div></div>
+<div class="cd-item"><div class="cd-num" id="cd-m">00</div><div class="cd-label">Minutes</div></div>
+<div class="cd-item"><div class="cd-num" id="cd-s">00</div><div class="cd-label">Seconds</div></div>
+</div>
+<div class="form-wrap">
+<div class="form-title">🎉 Get early access + a free document on launch day</div>
+<div class="form-sub">Drop your email. When DocReady launches you get first access and your first document formatted completely free.</div>
+<input class="email-input" type="email" id="email" placeholder="Enter your email address" onkeydown="if(event.key==='Enter')sub()">
+<button class="submit-btn" onclick="sub()">Notify Me →</button>
+<div class="privacy">🔒 No spam. No selling your email. Just a launch notification.</div>
+<div class="success" id="success">
+<div class="success-title">🎉 You are on the list!</div>
+<div class="success-text">We will email you the moment DocReady goes live. Your free document is waiting.</div>
+</div>
+</div>
+<hr class="divider">
+<div class="pricing-header">
+<h2>Choose the Way You Create Documents</h2>
+<p>Write it your way. We turn it into a finished, professional document. Simple pricing — start free, upgrade anytime, or pay per document. No pressure. No commitment.</p>
+</div>
+<div class="free-card">
+<div class="free-badge">🎁 START FREE — NO RISK</div>
+<h3>3-Day Free Trial</h3>
+<ul class="free-feats">
+<li>2 documents per day during your trial</li>
+<li>Access to all document types</li>
+<li>AI-assisted formatting and smart completion</li>
+<li>Full experience — no credit card needed</li>
+</ul>
+<div class="free-note">👉 Screenshot it. Snap it. Sync it. However you capture it — we format it.</div>
+</div>
+<div class="price-card">
+<div class="card-tier">🟢 Starter</div>
+<div class="card-price"><span>$</span>9.99</div>
+<div class="card-period">per month — for simple, occasional use</div>
+<ul class="card-feats">
+<li>5 documents per month</li>
+<li>Up to 10 pages each</li>
+<li>Basic templates</li>
+<li>PDF downloads</li>
+<li>Standard formatting</li>
+</ul>
+<div class="card-note">👉 Perfect if you just need a few documents done right</div>
+</div>
+<div class="price-card popular">
+<div class="pop-tag">⭐ MOST POPULAR</div>
+<div class="card-tier">🔵 Pro</div>
+<div class="card-price"><span>$</span>19.99</div>
+<div class="card-period">per month — for consistent, everyday use</div>
+<ul class="card-feats">
+<li>15 documents per month</li>
+<li>Up to 25 pages each</li>
+<li>Full template library</li>
+<li>PDF + Word + Google Docs</li>
+<li>AI voice input + smart completion</li>
+<li>Document history and storage</li>
+<li>1 FREE notarization per month (Value $25+)</li>
+</ul>
+<div class="card-note">👉 Everything you need to create professional documents consistently</div>
+</div>
+<div class="price-card unlimited">
+<div class="card-tier">🟣 Unlimited</div>
+<div class="card-price"><span>$</span>29.99</div>
+<div class="card-period">per month — for users who do not want limits</div>
+<ul class="card-feats">
+<li>Unlimited documents — no restrictions</li>
+<li>Unlimited pages</li>
+<li>Full system access — all templates and formats</li>
+<li>AI voice + smart completion</li>
+<li>Document history and storage</li>
+<li>2 notarizations per month included</li>
+<li>eBook and advanced formatting tools</li>
+<li>Upload your own Canva template</li>
+</ul>
+<div class="card-note">👉 Create without restrictions — no limits, no interruptions</div>
+</div>
+<div class="price-card business">
+<div class="best-tag">⭐ BEST FOR BUSINESSES & TEAMS</div>
+<div class="card-tier">🔴 Business</div>
+<div class="card-price"><span>$</span>59.99</div>
+<div class="card-period">per month — built for professionals, teams and high-volume users</div>
+<ul class="card-feats">
+<li>Unlimited documents — no restrictions</li>
+<li>Full system access — everything unlocked</li>
+<li>Team access — up to 3 users</li>
+<li>Custom branding on all documents</li>
+<li>Priority processing — no waiting</li>
+<li>AI voice + smart completion</li>
+<li>Full legal document library — 50+ templates</li>
+<li>Books, scripts, and long document formatting</li>
+<li>Multi-format downloads — PDF, Word, Google Docs</li>
+<li>API access for advanced integrations</li>
+<li>Up to $75 per month in notary credits</li>
+</ul>
+<div class="notary-value">💼 Includes up to $75/month in notary value</div>
+<div class="card-note">👉 Designed for business owners, landlords, and professionals who rely on documents daily</div>
+</div>
+<div class="ppu-card">
+<div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#6B6B8A;margin-bottom:4px;">💵 NOT READY FOR A PLAN?</div>
+<div class="ppu-price">$2.99 <span style="font-size:13px;font-weight:400;color:#6B6B8A;">per document</span></div>
+<div class="ppu-note">No subscription required • Up to 15 pages per document<br>Available after your free trial ends • No commitment</div>
+</div>
+<div class="no-pressure">
+<h4>🔒 No Pressure. No Commitment.</h4>
+<ul>
+<li>Start with your 3-day free trial</li>
+<li>Upgrade anytime — cancel anytime</li>
+<li>Or pay per document when needed</li>
+</ul>
+<div class="no-pressure-note">👉 We meet you where you are.</div>
+</div>
+<div class="hiw">
+<h4>⚡ How It Works — 4 Simple Steps</h4>
+<div class="hiw-step">
+<div class="hiw-num">1</div>
+<div class="hiw-text"><strong>Screenshot it. Snap it. Sync it. Speak it.</strong> — However you capture your content on any device — we accept it</div>
+</div>
+<div class="hiw-step">
+<div class="hiw-num">2</div>
+<div class="hiw-text"><strong>Sign in from anywhere</strong> — phone, library computer, laptop — your documents and history follow you to every device</div>
+</div>
+<div class="hiw-step">
+<div class="hiw-num">3</div>
+<div class="hiw-text"><strong>Our AI reads your content</strong> — identifies the document type and asks smart questions to complete anything missing</div>
+</div>
+<div class="hiw-step">
+<div class="hiw-num">4</div>
+<div class="hiw-text"><strong>Download your finished document</strong> — PDF, Word, or Google Docs — in 60 seconds or less</div>
+</div>
+</div>
+<div class="social-row">
+<a class="social-link" href="https://tiktok.com/@missyitsshejojofi" target="_blank">📱 TikTok</a>
+<a class="social-link" href="https://instagram.com/highlyfavoredbygod333" target="_blank">📷 Instagram</a>
+</div>
+<div class="footer">© 2026 DocReady™ — getformatflow.com</div>
+<div class="trademark">DocReady is a trademark. All rights reserved.</div>
 </div>
 <script>
 const LAUNCH=new Date();LAUNCH.setDate(LAUNCH.getDate()+14);
 function tick(){const now=new Date();const diff=LAUNCH-now;if(diff<=0){document.querySelector('.countdown').innerHTML='<div style="font-family:Syne,sans-serif;font-size:20px;font-weight:800;color:#10B981;">🚀 We Are Live!</div>';return;}document.getElementById('cd-d').textContent=String(Math.floor(diff/86400000)).padStart(2,'0');document.getElementById('cd-h').textContent=String(Math.floor(diff%86400000/3600000)).padStart(2,'0');document.getElementById('cd-m').textContent=String(Math.floor(diff%3600000/60000)).padStart(2,'0');document.getElementById('cd-s').textContent=String(Math.floor(diff%60000/1000)).padStart(2,'0');}
 tick();setInterval(tick,1000);
-let n=0;try{n=parseInt(localStorage.getItem('dr_n')||'0');}catch(e){}document.getElementById('count').textContent=n;
-function sub(){const e=document.getElementById('email');if(!e.value||!e.value.includes('@')){e.style.borderColor='#DC2626';setTimeout(()=>e.style.borderColor='',2000);return;}try{const arr=JSON.parse(localStorage.getItem('dr_emails')||'[]');if(!arr.includes(e.value)){arr.push(e.value);localStorage.setItem('dr_emails',JSON.stringify(arr));n++;localStorage.setItem('dr_n',n);document.getElementById('count').textContent=n;}}catch(ex){}document.getElementById('success').classList.add('show');e.value='';document.querySelector('.submit-btn').textContent='✅ You are in!';}
+function sub(){const e=document.getElementById('email');if(!e.value||!e.value.includes('@')){e.style.borderColor='#DC2626';setTimeout(()=>e.style.borderColor='',2000);return;}document.getElementById('success').classList.add('show');e.value='';document.querySelector('.submit-btn').textContent='✅ You are in!';}
 </script>
 </body>
 </html>
-
