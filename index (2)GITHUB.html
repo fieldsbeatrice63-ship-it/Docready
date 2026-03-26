@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DocReady™ — Screenshot it. Snap it. Sync it.</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --green: #1a7a4a;
+      --green-mid: #25a163;
+      --green-light: #d4f0e2;
+      --green-pale: #f0faf5;
+      --white: #ffffff;
+      --off-white: #f8fdf9;
+      --dark: #0d1f15;
+      --text: #1c2e22;
+      --muted: #5a7a65;
+      --gold: #c9913a;
+      --gold-light: #fdf3e3;
+      --radius: 16px;
+      --shadow: 0 4px 32px rgba(26,122,74,0.10);
+      --shadow-lg: 0 12px 56px rgba(26,122,74,0.16);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--off-white);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(248,253,249,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(26,122,74,0.10);
+      padding: 0 5%;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 68px;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem; font-weight: 900;
+      color: var(--green);
+      letter-spacing: -0.5px;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links a {
+      text-decoration: none; color: var(--muted);
+      font-size: 0.9rem; font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--green); }
+    .nav-cta {
+      background: var(--green); color: white;
+      border: none; border-radius: 50px;
+      padding: 0.55rem 1.4rem;
+      font-size: 0.9rem; font-weight: 600;
+      cursor: pointer; transition: all 0.2s;
+      font-family: 'DM Sans', sans-serif;
+      text-decoration: none;
+    }
+    .nav-cta:hover { background: var(--green-mid); transform: translateY(-1px); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      padding: 120px 5% 80px;
+      display: flex; align-items: center;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #f0faf5 0%, #ffffff 60%, #e8f7ef 100%);
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: -200px; right: -200px;
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(26,122,74,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; bottom: -100px; left: -100px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(201,145,58,0.06) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero-inner {
+      max-width: 1200px; margin: 0 auto; width: 100%;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: center;
+      position: relative; z-index: 1;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--green-light); color: var(--green);
+      border-radius: 50px; padding: 0.4rem 1rem;
+      font-size: 0.8rem; font-weight: 600;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.5px;
+    }
+    .hero-badge::before { content: '●'; font-size: 0.6rem; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 900; line-height: 1.1;
+      color: var(--dark);
+      margin-bottom: 1.2rem;
+    }
+    h1 em { color: var(--green); font-style: normal; }
+    .hero-sub {
+      font-size: 1.15rem; color: var(--muted);
+      line-height: 1.7; margin-bottom: 0.8rem;
+      font-weight: 400;
+    }
+    .hero-trust {
+      font-size: 0.9rem; color: var(--green);
+      font-weight: 600; margin-bottom: 2rem;
+      padding: 0.6rem 1rem;
+      background: var(--green-pale);
+      border-left: 3px solid var(--green);
+      border-radius: 0 8px 8px 0;
+    }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    .btn-primary {
+      background: var(--green); color: white;
+      border: none; border-radius: 50px;
+      padding: 0.9rem 2rem; font-size: 1rem;
+      font-weight: 600; cursor: pointer;
+      transition: all 0.25s; font-family: 'DM Sans', sans-serif;
+      box-shadow: 0 4px 20px rgba(26,122,74,0.30);
+    }
+    .btn-primary:hover { background: var(--green-mid); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(26,122,74,0.35); }
+    .btn-secondary {
+      background: transparent; color: var(--green);
+      border: 2px solid var(--green); border-radius: 50px;
+      padding: 0.9rem 2rem; font-size: 1rem;
+      font-weight: 600; cursor: pointer;
+      transition: all 0.25s; font-family: 'DM Sans', sans-serif;
+    }
+    .btn-secondary:hover { background: var(--green-pale); transform: translateY(-2px); }
+    .hero-methods {
+      display: flex; gap: 0.6rem; flex-wrap: wrap;
+    }
+    .method-pill {
+      background: white; border: 1px solid rgba(26,122,74,0.2);
+      border-radius: 50px; padding: 0.35rem 0.9rem;
+      font-size: 0.8rem; font-weight: 500; color: var(--text);
+      display: flex; align-items: center; gap: 0.4rem;
+    }
+
+    /* HERO CARD */
+    .hero-card {
+      background: white; border-radius: 24px;
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+      border: 1px solid rgba(26,122,74,0.08);
+      animation: floatCard 6s ease-in-out infinite;
+    }
+    @keyframes floatCard { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+    .card-header {
+      background: var(--green); padding: 1.2rem 1.5rem;
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .card-header-dots { display: flex; gap: 6px; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dot-r { background: #ff6b6b; }
+    .dot-y { background: #ffd93d; }
+    .dot-g { background: #6bcb77; }
+    .card-header-title { color: white; font-weight: 600; font-size: 0.9rem; margin-left: 0.5rem; }
+    .card-body { padding: 1.5rem; }
+    .upload-zone {
+      border: 2px dashed rgba(26,122,74,0.3);
+      border-radius: 16px; padding: 2rem;
+      text-align: center; margin-bottom: 1.2rem;
+      cursor: pointer; transition: all 0.2s;
+      background: var(--green-pale);
+    }
+    .upload-zone:hover { border-color: var(--green); background: var(--green-light); }
+    .upload-icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
+    .upload-text { font-size: 0.9rem; color: var(--muted); font-weight: 500; }
+    .upload-text strong { color: var(--green); }
+    .input-methods { display: grid; grid-template-columns: repeat(3,1fr); gap: 0.6rem; margin-bottom: 1.2rem; }
+    .input-method {
+      background: var(--green-pale); border: 1px solid var(--green-light);
+      border-radius: 10px; padding: 0.7rem 0.5rem;
+      text-align: center; cursor: pointer; transition: all 0.2s;
+      font-size: 0.75rem; font-weight: 600; color: var(--green);
+    }
+    .input-method:hover { background: var(--green-light); transform: translateY(-2px); }
+    .input-method .im-icon { font-size: 1.3rem; display: block; margin-bottom: 0.25rem; }
+    .demo-output {
+      background: var(--off-white); border-radius: 12px;
+      padding: 1rem; border: 1px solid rgba(26,122,74,0.1);
+    }
+    .demo-line { height: 10px; background: var(--green-light); border-radius: 4px; margin-bottom: 6px; }
+    .demo-line.short { width: 60%; }
+    .demo-line.med { width: 80%; }
+    .demo-line.full { width: 100%; }
+    .demo-line.title { height: 14px; background: var(--green); width: 45%; margin-bottom: 10px; }
+    .demo-label { font-size: 0.75rem; color: var(--muted); font-weight: 600; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.5px; }
+    .download-bar {
+      display: flex; gap: 0.5rem; margin-top: 1rem;
+    }
+    .dl-btn {
+      flex: 1; background: var(--green); color: white;
+      border: none; border-radius: 8px; padding: 0.6rem;
+      font-size: 0.75rem; font-weight: 600;
+      cursor: pointer; font-family: 'DM Sans', sans-serif;
+    }
+    .dl-btn.outline {
+      background: white; color: var(--green);
+      border: 1.5px solid var(--green);
+    }
+
+    /* SECTIONS */
+    section { padding: 80px 5%; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.8rem; font-weight: 700;
+      color: var(--green); letter-spacing: 2px;
+      text-transform: uppercase; margin-bottom: 0.75rem;
+    }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 900; color: var(--dark);
+      line-height: 1.15; margin-bottom: 1rem;
+    }
+    h2 em { color: var(--green); font-style: normal; }
+    .section-sub { font-size: 1.1rem; color: var(--muted); line-height: 1.7; max-width: 600px; }
+
+    /* WHO WE SERVE */
+    .serve-section { background: var(--dark); }
+    .serve-section h2 { color: white; }
+    .serve-section .section-label { color: var(--green-mid); }
+    .serve-section .section-sub { color: rgba(255,255,255,0.6); }
+    .serve-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem; margin-top: 3rem;
+    }
+    .serve-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px; padding: 1.5rem;
+      transition: all 0.3s;
+    }
+    .serve-card:hover {
+      background: rgba(26,122,74,0.15);
+      border-color: rgba(26,122,74,0.4);
+      transform: translateY(-4px);
+    }
+    .serve-icon { font-size: 2rem; margin-bottom: 0.75rem; display: block; }
+    .serve-title { font-weight: 700; color: white; margin-bottom: 0.4rem; font-size: 0.95rem; }
+    .serve-desc { font-size: 0.82rem; color: rgba(255,255,255,0.5); line-height: 1.5; }
+
+    /* PROBLEMS */
+    .problems-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .problem-card {
+      background: white; border-radius: 20px;
+      padding: 2rem; border: 1px solid rgba(26,122,74,0.08);
+      box-shadow: var(--shadow); transition: all 0.3s;
+    }
+    .problem-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .problem-num {
+      width: 40px; height: 40px;
+      background: var(--green); color: white;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+    .problem-title { font-weight: 700; font-size: 1.05rem; color: var(--dark); margin-bottom: 0.5rem; }
+    .problem-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
+
+    /* PRICING */
+    .pricing-section { background: var(--off-white); }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 1.2rem; margin-top: 3rem;
+    }
+    .pricing-card {
+      background: white; border-radius: 20px;
+      padding: 1.8rem 1.4rem;
+      border: 2px solid rgba(26,122,74,0.10);
+      transition: all 0.3s; position: relative;
+    }
+    .pricing-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .pricing-card.popular {
+      border-color: var(--green);
+      background: linear-gradient(135deg, #f0faf5, white);
+    }
+    .popular-badge {
+      position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+      background: var(--green); color: white;
+      border-radius: 50px; padding: 0.3rem 1rem;
+      font-size: 0.75rem; font-weight: 700; white-space: nowrap;
+    }
+    .pricing-tier { font-size: 0.8rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; }
+    .pricing-price { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 900; color: var(--dark); }
+    .pricing-price span { font-size: 0.9rem; font-weight: 400; color: var(--muted); font-family: 'DM Sans', sans-serif; }
+    .pricing-divider { height: 1px; background: rgba(26,122,74,0.1); margin: 1rem 0; }
+    .pricing-features { list-style: none; }
+    .pricing-features li {
+      font-size: 0.83rem; color: var(--text); padding: 0.3rem 0;
+      display: flex; gap: 0.5rem; align-items: flex-start;
+    }
+    .pricing-features li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .pricing-btn {
+      width: 100%; margin-top: 1.2rem;
+      background: var(--green); color: white;
+      border: none; border-radius: 50px; padding: 0.7rem;
+      font-weight: 600; font-size: 0.88rem;
+      cursor: pointer; transition: all 0.2s;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .pricing-card:not(.popular) .pricing-btn {
+      background: transparent; color: var(--green);
+      border: 2px solid var(--green);
+    }
+    .pricing-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+    .pay-per-use {
+      margin-top: 1.5rem; text-align: center;
+      background: var(--gold-light); border: 1px solid rgba(201,145,58,0.2);
+      border-radius: 16px; padding: 1.2rem 2rem;
+      font-size: 0.9rem; color: var(--text);
+    }
+    .pay-per-use strong { color: var(--gold); }
+
+    /* UPSELL ALERT */
+    .upsell-demo {
+      background: white; border-radius: 20px;
+      padding: 2rem; border: 1px solid rgba(26,122,74,0.1);
+      box-shadow: var(--shadow); margin-top: 3rem;
+    }
+    .upsell-demo h3 { font-weight: 700; color: var(--dark); margin-bottom: 1rem; }
+    .upsell-msg {
+      background: var(--green-pale); border: 1px solid var(--green-light);
+      border-left: 4px solid var(--green);
+      border-radius: 0 12px 12px 0;
+      padding: 1rem 1.2rem; margin-bottom: 0.75rem;
+      font-size: 0.88rem; color: var(--text); line-height: 1.6;
+    }
+    .upsell-msg .doc-count { font-weight: 700; color: var(--green); }
+
+    /* LANGUAGE */
+    .lang-section { background: var(--green); }
+    .lang-section h2 { color: white; }
+    .lang-section .section-label { color: rgba(255,255,255,0.7); }
+    .lang-section .section-sub { color: rgba(255,255,255,0.75); }
+    .lang-pills {
+      display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2.5rem;
+    }
+    .lang-pill {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 50px; padding: 0.5rem 1.2rem;
+      color: white; font-size: 0.88rem; font-weight: 500;
+      display: flex; align-items: center; gap: 0.5rem;
+      transition: all 0.2s;
+    }
+    .lang-pill.priority {
+      background: rgba(255,255,255,0.25);
+      border-color: rgba(255,255,255,0.5);
+      font-weight: 700;
+    }
+    .lang-pill:hover { background: rgba(255,255,255,0.3); transform: translateY(-2px); }
+
+    /* TRIAL SECTION */
+    .trial-section { background: white; }
+    .trial-box {
+      background: linear-gradient(135deg, var(--green-pale), white);
+      border: 2px solid var(--green-light);
+      border-radius: 28px; padding: 3rem;
+      text-align: center; max-width: 700px; margin: 3rem auto 0;
+    }
+    .trial-box h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem; font-weight: 900;
+      color: var(--dark); margin-bottom: 1rem;
+    }
+    .trial-box p { color: var(--muted); font-size: 1rem; line-height: 1.7; margin-bottom: 1.5rem; }
+    .trial-features {
+      display: flex; justify-content: center;
+      gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2rem;
+    }
+    .trial-feat {
+      display: flex; align-items: center; gap: 0.5rem;
+      font-size: 0.88rem; font-weight: 600; color: var(--green);
+    }
+    .trial-feat::before { content: '✓'; font-weight: 900; }
+    .watermark-note {
+      font-size: 0.8rem; color: var(--muted);
+      margin-top: 1rem; font-style: italic;
+    }
+
+    /* DOCUMENT TOOL SECTION */
+    .tool-section { background: var(--off-white); }
+    .tool-box {
+      background: white; border-radius: 28px;
+      box-shadow: var(--shadow-lg);
+      overflow: hidden; margin-top: 3rem;
+      border: 1px solid rgba(26,122,74,0.08);
+    }
+    .tool-header {
+      background: var(--green); padding: 1.5rem 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .tool-header h3 { color: white; font-size: 1.1rem; font-weight: 700; }
+    .tool-lang-select {
+      background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: white; border-radius: 8px;
+      padding: 0.4rem 0.8rem; font-size: 0.85rem;
+      font-family: 'DM Sans', sans-serif; cursor: pointer;
+    }
+    .tool-lang-select option { color: var(--dark); background: white; }
+    .tool-body { padding: 2rem; }
+    .tool-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .tool-col-label {
+      font-size: 0.8rem; font-weight: 700; color: var(--muted);
+      text-transform: uppercase; letter-spacing: 1px;
+      margin-bottom: 0.75rem;
+    }
+    textarea {
+      width: 100%; height: 180px;
+      border: 2px solid rgba(26,122,74,0.15);
+      border-radius: 12px; padding: 1rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem; color: var(--text);
+      resize: none; outline: none;
+      transition: border-color 0.2s;
+      background: var(--off-white);
+    }
+    textarea:focus { border-color: var(--green); background: white; }
+    .input-tabs {
+      display: flex; gap: 0.5rem; margin-bottom: 0.75rem; flex-wrap: wrap;
+    }
+    .input-tab {
+      background: var(--green-pale); color: var(--green);
+      border: 1px solid var(--green-light);
+      border-radius: 8px; padding: 0.35rem 0.8rem;
+      font-size: 0.78rem; font-weight: 600;
+      cursor: pointer; transition: all 0.2s;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .input-tab.active, .input-tab:hover {
+      background: var(--green); color: white; border-color: var(--green);
+    }
+    .doc-type-select {
+      width: 100%; border: 2px solid rgba(26,122,74,0.15);
+      border-radius: 12px; padding: 0.75rem 1rem;
+      font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+      color: var(--text); outline: none; margin-bottom: 0.75rem;
+      background: var(--off-white); cursor: pointer;
+      transition: border-color 0.2s;
+    }
+    .doc-type-select:focus { border-color: var(--green); }
+    .output-preview {
+      height: 180px; background: var(--off-white);
+      border: 2px solid rgba(26,122,74,0.1);
+      border-radius: 12px; padding: 1rem;
+      overflow-y: auto; position: relative;
+    }
+    .output-placeholder {
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      height: 100%; color: var(--muted);
+      font-size: 0.88rem; text-align: center;
+    }
+    .output-placeholder span { font-size: 2rem; margin-bottom: 0.5rem; }
+    .output-text { font-size: 0.88rem; color: var(--text); line-height: 1.7; white-space: pre-wrap; }
+    .watermark-overlay {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      pointer-events: none;
+      font-size: 1.2rem; font-weight: 900;
+      color: rgba(26,122,74,0.10);
+      transform: rotate(-20deg);
+      font-family: 'Playfair Display', serif;
+      letter-spacing: 2px;
+    }
+    .tool-actions {
+      margin-top: 1.5rem;
+      display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;
+    }
+    .format-btn {
+      background: var(--green); color: white;
+      border: none; border-radius: 50px;
+      padding: 0.9rem 2rem; font-size: 1rem;
+      font-weight: 700; cursor: pointer;
+      transition: all 0.25s; font-family: 'DM Sans', sans-serif;
+      box-shadow: 0 4px 20px rgba(26,122,74,0.3);
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .format-btn:hover { background: var(--green-mid); transform: translateY(-2px); }
+    .format-btn:disabled { background: var(--muted); cursor: not-allowed; transform: none; box-shadow: none; }
+    .voice-btn {
+      background: var(--gold-light); color: var(--gold);
+      border: 2px solid rgba(201,145,58,0.3);
+      border-radius: 50px; padding: 0.9rem 1.5rem;
+      font-size: 0.9rem; font-weight: 600;
+      cursor: pointer; transition: all 0.2s;
+      font-family: 'DM Sans', sans-serif;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .voice-btn:hover { background: rgba(201,145,58,0.2); }
+    .voice-btn.listening { background: rgba(201,145,58,0.2); animation: glow 1s infinite alternate; }
+    @keyframes glow { from{box-shadow:0 0 0 rgba(201,145,58,0.3)} to{box-shadow:0 0 16px rgba(201,145,58,0.5)} }
+    .status-msg {
+      font-size: 0.82rem; color: var(--muted);
+      font-weight: 500; padding: 0.5rem 1rem;
+      background: var(--green-pale); border-radius: 8px;
+      display: none;
+    }
+    .status-msg.show { display: block; }
+
+    /* UPSELL MODAL */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 200;
+      background: rgba(0,0,0,0.5); backdrop-filter: blur(4px);
+      align-items: center; justify-content: center;
+    }
+    .modal-overlay.show { display: flex; }
+    .modal {
+      background: white; border-radius: 28px;
+      padding: 2.5rem; max-width: 480px; width: 90%;
+      text-align: center; box-shadow: 0 24px 80px rgba(0,0,0,0.2);
+      animation: modalIn 0.3s ease;
+    }
+    @keyframes modalIn { from{transform:scale(0.9);opacity:0} to{transform:scale(1);opacity:1} }
+    .modal-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .modal h3 { font-family:'Playfair Display',serif; font-size:1.8rem; font-weight:900; color:var(--dark); margin-bottom:0.75rem; }
+    .modal p { color:var(--muted); font-size:0.95rem; line-height:1.7; margin-bottom:1.5rem; }
+    .modal-price { font-size:2.5rem; font-weight:900; color:var(--green); font-family:'Playfair Display',serif; margin-bottom:0.25rem; }
+    .modal-price-label { font-size:0.85rem; color:var(--muted); margin-bottom:1.5rem; }
+    .modal-btns { display:flex; flex-direction:column; gap:0.75rem; }
+    .modal-btn-primary { background:var(--green); color:white; border:none; border-radius:50px; padding:0.9rem; font-weight:700; font-size:1rem; cursor:pointer; font-family:'DM Sans',sans-serif; transition:all 0.2s; }
+    .modal-btn-primary:hover { background:var(--green-mid); }
+    .modal-btn-secondary { background:transparent; color:var(--muted); border:none; padding:0.5rem; font-size:0.85rem; cursor:pointer; font-family:'DM Sans',sans-serif; }
+    .modal-btn-secondary:hover { color:var(--text); }
+
+    /* FOOTER */
+    footer {
+      background: var(--dark); padding: 3rem 5%;
+      text-align: center;
+    }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem; font-weight: 900;
+      color: white; margin-bottom: 0.5rem;
+    }
+    .footer-logo span { color: var(--gold); }
+    .footer-tagline { color: rgba(255,255,255,0.5); font-size: 0.9rem; margin-bottom: 1.5rem; font-style: italic; }
+    .footer-links { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+    .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--green-mid); }
+    .footer-copy { color: rgba(255,255,255,0.3); font-size: 0.78rem; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-card { display: none; }
+      .tool-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      h1 { font-size: 2.2rem; }
+    }
+
+    /* ANIMATIONS */
+    .fade-up {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .spinner { display: inline-block; width: 18px; height: 18px; border: 2px solid rgba(255,255,255,0.4); border-top-color: white; border-radius: 50%; animation: spin 0.7s linear infinite; }
+    @keyframes spin { to{transform:rotate(360deg)} }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Doc<span>Ready</span>™</div>
+  <div class="nav-links">
+    <a href="#how-it-works">How It Works</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#languages">Languages</a>
+    <a href="#try-it">Try It</a>
+  </div>
+  <a href="#try-it" class="nav-cta">Start Free Trial</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">AI Document Formatting — Live Now</div>
+      <h1>From <em>raw notes</em> to professional documents — in 60 seconds</h1>
+      <p class="hero-sub">From everyday resumes to business contracts and legal documents — if it needs to be professional, DocReady formats and structures your document.</p>
+      <p class="hero-trust">AI handles the formatting. You control the outcome. Every document is verified before it reaches you.</p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="document.getElementById('try-it').scrollIntoView({behavior:'smooth'})">Try It Free — No Card Needed</button>
+        <button class="btn-secondary" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">See Pricing</button>
+      </div>
+      <div class="hero-methods">
+        <div class="method-pill">📋 Copy & Paste</div>
+        <div class="method-pill">📸 Screenshot</div>
+        <div class="method-pill">📷 Snap a Photo</div>
+        <div class="method-pill">🔄 Sync Device</div>
+        <div class="method-pill">🎤 Speak It</div>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="card-header">
+        <div class="card-header-dots">
+          <div class="dot dot-r"></div>
+          <div class="dot dot-y"></div>
+          <div class="dot dot-g"></div>
+        </div>
+        <div class="card-header-title">DocReady™ — Formatting Your Document</div>
+      </div>
+      <div class="card-body">
+        <div class="upload-zone">
+          <div class="upload-icon">📄</div>
+          <div class="upload-text"><strong>Drop your document here</strong><br/>or click to upload</div>
+        </div>
+        <div class="input-methods">
+          <div class="input-method"><span class="im-icon">📋</span>Paste</div>
+          <div class="input-method"><span class="im-icon">📸</span>Screenshot</div>
+          <div class="input-method"><span class="im-icon">🎤</span>Voice</div>
+          <div class="input-method"><span class="im-icon">📷</span>Photo</div>
+          <div class="input-method"><span class="im-icon">🔄</span>Sync</div>
+          <div class="input-method"><span class="im-icon">📝</span>Template</div>
+        </div>
+        <div class="demo-output">
+          <div class="demo-label">✨ Formatted Output Ready</div>
+          <div class="demo-line title"></div>
+          <div class="demo-line full"></div>
+          <div class="demo-line med"></div>
+          <div class="demo-line full"></div>
+          <div class="demo-line short"></div>
+          <div class="demo-line full"></div>
+          <div class="demo-line med"></div>
+        </div>
+        <div class="download-bar">
+          <button class="dl-btn">⬇ Download PDF</button>
+          <button class="dl-btn outline">Word</button>
+          <button class="dl-btn outline">Docs</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO WE SERVE -->
+<section class="serve-section" id="how-it-works">
+  <div class="section-inner">
+    <div class="section-label fade-up">Who DocReady Serves</div>
+    <h2 class="fade-up">We meet you <em>where you are</em></h2>
+    <p class="section-sub fade-up">No formatting skills needed. Just write, upload, or speak — DocReady does the rest.</p>
+    <div class="serve-grid">
+      <div class="serve-card fade-up">
+        <span class="serve-icon">👤</span>
+        <div class="serve-title">Everyday People</div>
+        <div class="serve-desc">Resumes, letters, documents — formatted professionally without needing to know how.</div>
+      </div>
+      <div class="serve-card fade-up">
+        <span class="serve-icon">🌎</span>
+        <div class="serve-title">Non-English Speakers</div>
+        <div class="serve-desc">Spanish, Haitian Creole, French, Arabic — DocReady works in your language.</div>
+      </div>
+      <div class="serve-card fade-up">
+        <span class="serve-icon">💼</span>
+        <div class="serve-title">Job Seekers</div>
+        <div class="serve-desc">Handwritten notes to professional PDF resume in 60 seconds flat.</div>
+      </div>
+      <div class="serve-card fade-up">
+        <span class="serve-icon">🏢</span>
+        <div class="serve-title">Small Business Owners</div>
+        <div class="serve-desc">Contracts, business plans, invoices, legal agreements — all in one place.</div>
+      </div>
+      <div class="serve-card fade-up">
+        <span class="serve-icon">🏠</span>
+        <div class="serve-title">Landlords</div>
+        <div class="serve-desc">Lease agreements, notices, legal documents — formatted and notarized.</div>
+      </div>
+      <div class="serve-card fade-up">
+        <span class="serve-icon">✍️</span>
+        <div class="serve-title">Writers & Creators</div>
+        <div class="serve-desc">Scripts, books, content plans — upload multiple pages and format in one step.</div>
+      </div>
+      <div class="serve-card fade-up">
+        <span class="serve-icon">👴</span>
+        <div class="serve-title">Seniors & Less Tech-Savvy</div>
+        <div class="serve-desc">Screenshot it, speak it, or snap it — no computer skills needed.</div>
+      </div>
+      <div class="serve-card fade-up">
+        <span class="serve-icon">🎖️</span>
+        <div class="serve-title">Veterans & Families</div>
+        <div class="serve-desc">VA documents, benefit letters, legal paperwork — all supported.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 PROBLEMS -->
+<section style="background:white;" id="problems">
+  <div class="section-inner">
+    <div class="section-label fade-up">The Problems We Solve</div>
+    <h2 class="fade-up">5 reasons people struggle with <em>documents</em></h2>
+    <div class="problems-grid">
+      <div class="problem-card fade-up">
+        <div class="problem-num">1</div>
+        <div class="problem-title">The Copy-Paste Trap</div>
+        <div class="problem-desc">People get great AI output but spend hours reformatting manually. DocReady does it in 60 seconds automatically.</div>
+      </div>
+      <div class="problem-card fade-up">
+        <div class="problem-num">2</div>
+        <div class="problem-title">The Phone-to-Computer Gap</div>
+        <div class="problem-desc">Notes on your phone can't easily become formatted documents. DocReady syncs across every device.</div>
+      </div>
+      <div class="problem-card fade-up">
+        <div class="problem-num">3</div>
+        <div class="problem-title">The Long Document Problem</div>
+        <div class="problem-desc">Books and multi-page documents take hours to format. DocReady handles any length including ePub format.</div>
+      </div>
+      <div class="problem-card fade-up">
+        <div class="problem-num">4</div>
+        <div class="problem-title">The Legal Document Hassle</div>
+        <div class="problem-desc">Finding, filling, and notarizing legal documents requires 5 different websites. DocReady is one place for all of it.</div>
+      </div>
+      <div class="problem-card fade-up">
+        <div class="problem-num">5</div>
+        <div class="problem-title">The Language Barrier</div>
+        <div class="problem-desc">Most formatting platforms only serve English speakers. DocReady works in 100+ languages.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRY IT — LIVE TOOL -->
+<section class="tool-section" id="try-it">
+  <div class="section-inner">
+    <div class="section-label fade-up">Try It Right Now — Free</div>
+    <h2 class="fade-up">Your first document is on <em>us</em></h2>
+    <p class="section-sub fade-up">Paste your text, speak it, or type it below. DocReady will format it into a professional document instantly.</p>
+    <div class="tool-box fade-up">
+      <div class="tool-header">
+        <h3>DocReady™ Document Formatter</h3>
+        <select class="tool-lang-select" id="langSelect">
+          <option value="English">🇺🇸 English</option>
+          <option value="Spanish">🇪🇸 Español</option>
+          <option value="French">🇫🇷 Français</option>
+          <option value="Haitian Creole">🇭🇹 Kreyòl Ayisyen</option>
+          <option value="Portuguese">🇧🇷 Português</option>
+          <option value="Arabic">🇸🇦 العربية</option>
+          <option value="Mandarin">🇨🇳 普通话</option>
+        </select>
+      </div>
+      <div class="tool-body">
+        <div class="tool-grid">
+          <div>
+            <div class="tool-col-label">Your Content</div>
+            <div class="input-tabs">
+              <button class="input-tab active" onclick="switchTab(this,'paste')">📋 Paste / Type</button>
+              <button class="input-tab" onclick="switchTab(this,'voice')">🎤 Voice</button>
+            </div>
+            <select class="doc-type-select" id="docType">
+              <option value="">Select document type...</option>
+              <option value="Resume">Resume / CV</option>
+              <option value="Cover Letter">Cover Letter</option>
+              <option value="Business Letter">Business Letter</option>
+              <option value="Contract">Contract</option>
+              <option value="Lease Agreement">Lease Agreement</option>
+              <option value="Invoice">Invoice</option>
+              <option value="Business Plan">Business Plan</option>
+              <option value="Legal Document">Legal Document</option>
+              <option value="Personal Statement">Personal Statement</option>
+              <option value="Other">Other Document</option>
+            </select>
+            <textarea id="userInput" placeholder="Paste your text here, type your notes, or click Voice to speak... DocReady will format it into a professional document."></textarea>
+          </div>
+          <div>
+            <div class="tool-col-label">Formatted Output</div>
+            <div style="height:36px; margin-bottom:0.75px;"></div>
+            <div style="margin-bottom:0.75rem; height:36px;"></div>
+            <div class="output-preview" id="outputPreview">
+              <div class="output-placeholder" id="outputPlaceholder">
+                <span>✨</span>
+                Your formatted document will appear here
+              </div>
+              <div class="output-text" id="outputText" style="display:none;"></div>
+              <div class="watermark-overlay" id="watermarkOverlay" style="display:none;">DOCREADY TRIAL</div>
+            </div>
+          </div>
+        </div>
+        <div class="tool-actions">
+          <button class="format-btn" id="formatBtn" onclick="formatDocument()">
+            <span id="formatBtnText">✨ Format My Document</span>
+          </button>
+          <button class="voice-btn" id="voiceBtn" onclick="toggleVoice()">🎤 Speak It</button>
+          <div class="status-msg" id="statusMsg"></div>
+        </div>
+        <div id="downloadBar" style="display:none; margin-top:1.2rem; padding:1.2rem; background:var(--green-pale); border-radius:16px; border:1px solid var(--green-light);">
+          <div style="font-weight:700; color:var(--dark); margin-bottom:0.75rem;">✅ Your document is ready!</div>
+          <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+            <button class="format-btn" style="padding:0.7rem 1.5rem; font-size:0.88rem;" onclick="showUpsell('pdf')">⬇ Download PDF — $2.99</button>
+            <button class="voice-btn" style="font-size:0.85rem;" onclick="showUpsell('word')">📄 Word Format</button>
+            <button class="voice-btn" style="font-size:0.85rem;" onclick="showUpsell('docs')">📊 Google Docs</button>
+          </div>
+          <div class="watermark-note">Trial version — watermark applied. Upgrade to download your clean professional copy.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing-section" id="pricing">
+  <div class="section-inner">
+    <div class="section-label fade-up">Simple Pricing</div>
+    <h2 class="fade-up">Start free. Pay only when <em>you're ready</em></h2>
+    <p class="section-sub fade-up">No credit card needed for your free trial. Upgrade anytime.</p>
+    <div class="pricing-grid">
+      <div class="pricing-card fade-up">
+        <div class="pricing-tier">Free Trial</div>
+        <div class="pricing-price">$0 <span>/ 3 days</span></div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li>1 document total</li>
+          <li>Up to 3 pages</li>
+          <li>All document types</li>
+          <li>Full experience</li>
+          <li>No credit card needed</li>
+        </ul>
+        <button class="pricing-btn" onclick="document.getElementById('try-it').scrollIntoView({behavior:'smooth'})">Start Free</button>
+      </div>
+      <div class="pricing-card fade-up">
+        <div class="pricing-tier">Starter</div>
+        <div class="pricing-price">$9.99 <span>/ month</span></div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li>5 documents/month</li>
+          <li>Up to 10 pages each</li>
+          <li>Basic templates</li>
+          <li>PDF download</li>
+        </ul>
+        <button class="pricing-btn">Get Started</button>
+      </div>
+      <div class="pricing-card popular fade-up">
+        <div class="popular-badge">⭐ Most Popular</div>
+        <div class="pricing-tier">Pro</div>
+        <div class="pricing-price">$19.99 <span>/ month</span></div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li>15 documents/month</li>
+          <li>Up to 25 pages</li>
+          <li>All templates</li>
+          <li>PDF + Word + Google Docs</li>
+          <li>Voice input</li>
+          <li>Saved history</li>
+          <li>1 FREE notarization/month</li>
+        </ul>
+        <button class="pricing-btn">Go Pro</button>
+      </div>
+      <div class="pricing-card fade-up">
+        <div class="pricing-tier">Unlimited</div>
+        <div class="pricing-price">$29.99 <span>/ month</span></div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li>Unlimited documents</li>
+          <li>Unlimited pages</li>
+          <li>Book formatting</li>
+          <li>ePub & Kindle export</li>
+          <li>Canva template upload</li>
+          <li>2 notarizations/month</li>
+        </ul>
+        <button class="pricing-btn">Go Unlimited</button>
+      </div>
+      <div class="pricing-card fade-up">
+        <div class="pricing-tier">Business</div>
+        <div class="pricing-price">$59.99 <span>/ month</span></div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li>Unlimited everything</li>
+          <li>3 team members</li>
+          <li>Custom branding</li>
+          <li>Priority support</li>
+          <li>API access</li>
+          <li>$75/month notary credits</li>
+          <li>Full legal library 50+ templates</li>
+        </ul>
+        <button class="pricing-btn">Go Business</button>
+      </div>
+    </div>
+    <div class="pay-per-use fade-up">
+      Not ready for a subscription? <strong>Pay Per Use — $2.99/document</strong> — up to 15 pages — no commitment — available after your free trial ends.
+    </div>
+  </div>
+</section>
+
+<!-- LANGUAGES -->
+<section class="lang-section" id="languages">
+  <div class="section-inner">
+    <div class="section-label fade-up">100+ Languages</div>
+    <h2 class="fade-up">DocReady speaks <em>your language</em></h2>
+    <p class="section-sub fade-up">Select your language from the dropdown — the AI responds and formats your document in that language. No extra cost. Built in.</p>
+    <div class="lang-pills">
+      <div class="lang-pill priority fade-up">🇺🇸 English</div>
+      <div class="lang-pill priority fade-up">🇪🇸 Español</div>
+      <div class="lang-pill priority fade-up">🇭🇹 Kreyòl Ayisyen</div>
+      <div class="lang-pill priority fade-up">🇫🇷 Français</div>
+      <div class="lang-pill priority fade-up">🇧🇷 Português</div>
+      <div class="lang-pill priority fade-up">🇸🇦 العربية</div>
+      <div class="lang-pill priority fade-up">🇨🇳 普通话</div>
+      <div class="lang-pill fade-up">🇩🇪 Deutsch</div>
+      <div class="lang-pill fade-up">🇮🇹 Italiano</div>
+      <div class="lang-pill fade-up">🇯🇵 日本語</div>
+      <div class="lang-pill fade-up">🇰🇷 한국어</div>
+      <div class="lang-pill fade-up">🇷🇺 Русский</div>
+      <div class="lang-pill fade-up">🇮🇳 हिन्दी</div>
+      <div class="lang-pill fade-up">🇵🇱 Polski</div>
+      <div class="lang-pill fade-up">+ 90 more languages →</div>
+    </div>
+  </div>
+</section>
+
+<!-- FREE TRIAL CTA -->
+<section class="trial-section">
+  <div class="section-inner" style="text-align:center;">
+    <div class="section-label fade-up">Get Started Today</div>
+    <div class="trial-box fade-up">
+      <h3>Try DocReady Free — Right Now</h3>
+      <p>No credit card. No commitment. Just paste your text or speak your notes and watch DocReady turn it into a professional document in seconds.</p>
+      <div class="trial-features">
+        <div class="trial-feat">3-Day Free Trial</div>
+        <div class="trial-feat">No Credit Card</div>
+        <div class="trial-feat">All Document Types</div>
+        <div class="trial-feat">100+ Languages</div>
+      </div>
+      <button class="btn-primary" style="font-size:1.1rem; padding:1rem 2.5rem;" onclick="document.getElementById('try-it').scrollIntoView({behavior:'smooth'})">
+        Start Formatting — It's Free
+      </button>
+      <div class="watermark-note">Trial documents include a watermark. Upgrade to download your clean professional copy.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Doc<span>Ready</span>™</div>
+  <div class="footer-tagline">Screenshot it. Snap it. Sync it. However you capture it — we format it.</div>
+  <div class="footer-links">
+    <a href="#home">Home</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#languages">Languages</a>
+    <a href="#try-it">Try It Free</a>
+    <a href="https://tiktok.com/@missyitsshejojofi" target="_blank">TikTok</a>
+    <a href="https://instagram.com/highlyfavoredbygod333" target="_blank">Instagram</a>
+  </div>
+  <div class="footer-copy">© 2026 DocReady™ — A Perception Legacy Group Product — getformatflow.com</div>
+</footer>
+
+<!-- UPSELL MODAL -->
+<div class="modal-overlay" id="upsellModal">
+  <div class="modal">
+    <div class="modal-icon">🎉</div>
+    <h3>Your document is ready!</h3>
+    <p>Download your clean, watermark-free professional document — or upgrade to Pro and get 15 documents every month.</p>
+    <div class="modal-price">$2.99</div>
+    <div class="modal-price-label">one-time download — no subscription needed</div>
+    <div class="modal-btns">
+      <button class="modal-btn-primary" onclick="closeModal()">⬇ Download Clean Copy — $2.99</button>
+      <button class="modal-btn-primary" style="background:var(--gold);" onclick="closeModal()">⭐ Upgrade to Pro — $19.99/month — Save More</button>
+      <button class="modal-btn-secondary" onclick="closeModal()">No thanks, I'll keep the watermarked version</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ANTHROPIC API KEY — REPLACE WITH YOUR KEY
+  const ANTHROPIC_API_KEY = 'YOUR_ANTHROPIC_API_KEY_HERE';
+
+  // VOICE
+  let recognition = null;
+  let isListening = false;
+
+  function switchTab(el, type) {
+    document.querySelectorAll('.input-tab').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+    if (type === 'voice') toggleVoice();
+  }
+
+  function toggleVoice() {
+    const btn = document.getElementById('voiceBtn');
+    if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+      showStatus('Voice input requires Chrome browser. Please use Chrome for this feature.'); return;
+    }
+    if (isListening) {
+      recognition.stop(); isListening = false;
+      btn.classList.remove('listening');
+      btn.textContent = '🎤 Speak It'; return;
+    }
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    recognition = new SpeechRecognition();
+    const lang = document.getElementById('langSelect').value;
+    const langMap = { 'English':'en-US','Spanish':'es-ES','French':'fr-FR','Haitian Creole':'fr-HT','Portuguese':'pt-BR','Arabic':'ar-SA','Mandarin':'zh-CN' };
+    recognition.lang = langMap[lang] || 'en-US';
+    recognition.continuous = true; recognition.interimResults = true;
+    recognition.onstart = () => { isListening = true; btn.classList.add('listening'); btn.textContent = '🛑 Stop Listening'; showStatus('Listening... speak now'); };
+    recognition.onresult = (e) => {
+      let t = '';
+      for (let i = e.resultIndex; i < e.results.length; i++) t += e.results[i][0].transcript;
+      document.getElementById('userInput').value += t;
+    };
+    recognition.onend = () => { isListening = false; btn.classList.remove('listening'); btn.textContent = '🎤 Speak It'; showStatus('Voice captured! Click Format to continue.'); };
+    recognition.start();
+  }
+
+  function showStatus(msg) {
+    const el = document.getElementById('statusMsg');
+    el.textContent = msg; el.classList.add('show');
+    setTimeout(() => el.classList.remove('show'), 4000);
+  }
+
+  async function formatDocument() {
+    const input = document.getElementById('userInput').value.trim();
+    const docType = document.getElementById('docType').value;
+    const lang = document.getElementById('langSelect').value;
+    if (!input) { showStatus('Please enter some text first.'); return; }
+
+    const btn = document.getElementById('formatBtn');
+    const btnText = document.getElementById('formatBtnText');
+    btn.disabled = true;
+    btnText.innerHTML = '<span class="spinner"></span> Formatting...';
+
+    document.getElementById('outputPlaceholder').style.display = 'none';
+    document.getElementById('outputText').style.display = 'none';
+    document.getElementById('watermarkOverlay').style.display = 'none';
+    document.getElementById('downloadBar').style.display = 'none';
+    showStatus('DocReady is formatting your document...');
+
+    const docLabel = docType || 'professional document';
+    const systemPrompt = `You are DocReady, a professional document formatter. Format the user's input into a clean, professional ${docLabel}. Respond in ${lang}. Structure it properly with appropriate headings, sections, and professional language. Make it look polished and complete. Do not add commentary — just return the formatted document content.`;
+
+    try {
+      const res = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-api-key': ANTHROPIC_API_KEY, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
+        body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: 1000, system: systemPrompt, messages: [{ role: 'user', content: input }] })
+      });
+      const data = await res.json();
+      if (data.content && data.content[0]) {
+        const formatted = data.content[0].text;
+        document.getElementById('outputText').textContent = formatted;
+        document.getElementById('outputText').style.display = 'block';
+        document.getElementById('watermarkOverlay').style.display = 'flex';
+        document.getElementById('downloadBar').style.display = 'block';
+        showStatus('✅ Document formatted! Download your clean copy below.');
+      } else {
+        showStatus('Something went wrong. Please try again.');
+      }
+    } catch (err) {
+      showStatus('Connection error. Please check your internet and try again.');
+    }
+
+    btn.disabled = false;
+    btnText.innerHTML = '✨ Format My Document';
+  }
+
+  function showUpsell(type) {
+    document.getElementById('upsellModal').classList.add('show');
+  }
+
+  function closeModal() {
+    document.getElementById('upsellModal').classList.remove('show');
+  }
+
+  document.getElementById('upsellModal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+
+  // SCROLL ANIMATIONS
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
