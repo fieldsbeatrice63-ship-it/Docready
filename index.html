@@ -459,10 +459,18 @@
     document.getElementById('downloadBar').style.display = 'none';
     showStatus('DocReady is formatting your document...');
     try {
-      const res = await fetch('https://api.anthropic.com/v1/messages', {
+      const res = await fetch('/.netlify/functions/format', {
         method: 'POST',
-        headers: {'Content-Type':'application/json','x-api-key':ANTHROPIC_API_KEY,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
-        body: JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:`You are DocReady, a professional document formatter. Format the user input into a clean professional ${docType||'document'}. Respond in ${lang}. Structure it properly with headings and sections. Return only the formatted document.`,messages:[{role:'user',content:input}]})
+    headers: {
+  'Content-Type': 'application/json'
+},
+body: JSON.stringify({
+  input: input,
+  docType: docType,
+  lang: lang
+})
+  
+       
       });
       const data = await res.json();
       if (data.content && data.content[0]) {
