@@ -177,7 +177,34 @@
     .fade-up.visible { opacity: 1; transform: translateY(0); }
     .spinner { display: inline-block; width: 18px; height: 18px; border: 2px solid rgba(255,255,255,0.4); border-top-color: white; border-radius: 50%; animation: spin 0.7s linear infinite; }
     @keyframes spin { to{transform:rotate(360deg)} }
-    @media (max-width: 768px) { .hero-inner { grid-template-columns: 1fr; } .hero-card { display: none; } .tool-grid { grid-template-columns: 1fr; } .nav-links { display: none; } }
+    @media (max-width: 768px) { .hero-inner { grid-template-columns: 1fr; } }
+
+.start-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin: 1rem 0 1.25rem 0;
+}
+
+.start-action-btn {
+  background: #ffffff;
+  color: #0f172a;
+  border: 1px solid #d7e3e0;
+  border-radius: 999px;
+  padding: 0.7rem 1.1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.start-action-btn:hover {
+  background: #0f766e;
+  color: #ffffff;
+  border-color: #0f766e;
+}
+
+</style>
   </style>
 </head>
 <body>
