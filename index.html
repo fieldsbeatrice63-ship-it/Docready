@@ -247,7 +247,7 @@
         <div class="card-header-title">FormatFlow™ — Document Formatter</div>
       </div>
       <div class="card-body">
-       <label class="upload-zone" for="heroUpload"><div class="upload-icon">📄</div><div class="upload-text"><strong>Drop your document here</strong><br>or click to upload</div></label>
+       <div class="upload-zone" onclick="document.getElementById('heroUpload').click()"><div class="upload-icon">📄</div><div class="upload-text"><strong>Drop your document here</strong><br>or click to upload</div></div>
         <input id="heroUpload" type="file" accept=".pdf,.doc,.docx,.txt,image/*" style="display:none;">
         <div class="input-methods">
          <button class="input-method" onclick="startWithPaste()"><span class="im-icon">📄</span>Enter Content</button>
