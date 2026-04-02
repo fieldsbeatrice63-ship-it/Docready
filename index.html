@@ -249,9 +249,9 @@
       <div class="card-body">
         <div class="upload-zone"><div class="upload-icon">📄</div><div class="upload-text"><strong>Drop your document here</strong><br/>or click to upload</div></div>
         <div class="input-methods">
-         <div class="input-method"><span class="im-icon">📄</span>Enter Content</div>
-          <div class="input-method"><span class="im-icon">📸</span>Screenshot</div>
-          <div class="input-method"><span class="im-icon">🎤</span>Voice Input</div>
+         <button class="input-method" onclick="startWithPaste()"><span class="im-icon">📄</span>Enter Content</button>
+<button class="input-method" onclick="document.getElementById('try-it').scrollIntoView({behavior:'smooth'})"><span class="im-icon">📸</span>Screenshot</button>
+<button class="input-method" onclick="startWithVoice()"><span class="im-icon">🎤</span>Voice Input</button>
           
         </div>
         <div class="demo-output">
