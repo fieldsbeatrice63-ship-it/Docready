@@ -617,7 +617,48 @@ Choose how you want to start — type your content, upload a file, or add a scre
     recognition.start();
   }
   function showStatus(msg) { const el = document.getElementById('statusMsg'); el.textContent = msg; el.classList.add('show'); setTimeout(() => el.classList.remove('show'), 4000); }
+async function formatDocument() {
+  const inputEl = document.getElementById('userInput');
+  const docTypeEl = document.getElementById('docType');
+  const btn = document.getElementById('formatBtn');
+  const btnText = document.getElementById('formatBtnText');
+  const outputPlaceholder = document.getElementById('outputPlaceholder');
+  const outputText = document.getElementById('outputText');
+  const watermarkOverlay = document.getElementById('watermarkOverlay');
+  const downloadBar = document.getElementById('downloadBar');
 
+  const input = inputEl ? inputEl.value.trim() : '';
+  const docType = docTypeEl ? docTypeEl.value : 'Document';
+
+  if (!input) {
+    showStatus('Please enter or upload content first.');
+    return;
+  }
+
+  if (btn) btn.disabled = true;
+  if (btnText) btnText.innerHTML = '<span class="spinner"></span> Formatting...';
+
+  if (outputPlaceholder) outputPlaceholder.style.display = 'none';
+  if (watermarkOverlay) watermarkOverlay.style.display = 'none';
+
+  setTimeout(() => {
+    const safeOutput =
+      docType + '\n\n' +
+      input;
+
+    if (outputText) {
+      outputText.textContent = safeOutput;
+      outputText.style.display = 'block';
+    }
+
+    if (downloadBar) downloadBar.style.display = 'block';
+
+    showStatus('✅ Safe mode preview ready. Live AI formatting is temporarily turned off.');
+
+    if (btn) btn.disabled = false;
+    if (btnText) btnText.innerHTML = '✨ Format My Document';
+  }, 600);
+}
       },
       body: JSON.stringify({
         input: input,
