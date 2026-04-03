@@ -374,6 +374,109 @@
     flex-direction: column !important;
     gap: 12px !important;
   }
+}
+/* FORMATTER MOBILE FIX */
+@media (max-width: 768px) {
+
+  nav {
+    padding: 12px 16px !important;
+  }
+
+  .nav-logo {
+    font-size: 2.2rem !important;
+    line-height: 1.05 !important;
+  }
+
+  .nav-links {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px 14px !important;
+    width: 100% !important;
+    margin-top: 8px !important;
+  }
+
+  .nav-links a {
+    font-size: 0.95rem !important;
+    line-height: 1.2 !important;
+  }
+
+  h1 {
+    font-size: 3rem !important;
+    line-height: 1.05 !important;
+  }
+
+  h2 {
+    font-size: 2.4rem !important;
+    line-height: 1.08 !important;
+  }
+
+  .serve-grid,
+  .pricing-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+  }
+
+  .serve-card,
+  .pricing-card {
+    width: 100% !important;
+    min-height: auto !important;
+  }
+
+  #try-it textarea,
+  #try-it select,
+  #try-it input,
+  #try-it .output-preview,
+  #try-it #outputPreview,
+  #try-it #downloadBar,
+  #try-it .tool-actions {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  #try-it textarea,
+  #userInput {
+    min-height: 260px !important;
+    height: 260px !important;
+    font-size: 1rem !important;
+    line-height: 1.45 !important;
+    overflow-y: auto !important;
+  }
+
+  #try-it .output-preview,
+  #outputPreview {
+    min-height: 260px !important;
+    height: auto !important;
+  }
+
+  #try-it .tool-actions {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+
+  #try-it .format-btn,
+  #try-it .voice-btn,
+  #try-it .tool-btn,
+  #try-it #formatBtn,
+  #try-it #voiceBtn,
+  #try-it #downloadBar a,
+  #try-it #downloadBar button {
+    width: 100% !important;
+    display: block !important;
+    text-align: center !important;
+  }
+
+  #try-it #downloadBar > div:last-child {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+
+  #try-it .tool-col-label {
+    font-size: 0.95rem !important;
+    line-height: 1.2 !important;
+  }
 }    
 </style>
  
