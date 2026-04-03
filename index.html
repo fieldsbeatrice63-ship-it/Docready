@@ -813,6 +813,11 @@ if (!res.ok) {
   showStatus(err.name === 'AbortError' ? 'Formatter timed out. Please try again.' : 'Connection error. Please try again.');
 } finally {
   clearTimeout(timeoutId);
+  btn.disabled = false;
+  btnText.innerHTML = 'Format Document';
+}
+} finally {
+  clearTimeout(timeoutId);
 } 
     btn.disabled = false; btnText.innerHTML = '✨ Format My Document';
   }
