@@ -778,7 +778,11 @@ Go Business
     document.getElementById('downloadBar').style.display = 'none';
     showStatus('FormatFlow is formatting your document...');
     try {
-      const res = await fetch('https://dancing-griffin-99a31d.netlify.app/.netlify/functions/format', {
+    const controller = new AbortController();
+const timeoutId = setTimeout(() => controller.abort(), 15000);
+
+const res = await fetch('https://dancing-griffin-99a31d.netlify.app/.netlify/functions/format', {
+signal: controller.signal, 
         method: 'POST',
     headers: {
   'Content-Type': 'application/json'
@@ -791,7 +795,8 @@ body: JSON.stringify({
   
        
       });
-      const data = await res.json();
+     const data = await res.json();
+clearTimeout(timeoutId);
 
 if (!res.ok) {
     showStatus(data.error || 'Formatting failed. Please try again.');
@@ -804,7 +809,7 @@ if (!res.ok) {
 } else {
     showStatus('No formatted text was returned.');
 }
-    } catch(err) { showStatus('Connection error. Please try again.'); }
+   } catch(err) { showStatus(err.name === 'AbortError' ? 'Formatter timed out. Please try again.' : 'Connection error. Please try again.'); }
     btn.disabled = false; btnText.innerHTML = '✨ Format My Document';
   }
   function showUpsell() {
