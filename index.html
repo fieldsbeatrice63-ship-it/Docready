@@ -792,13 +792,18 @@ body: JSON.stringify({
        
       });
       const data = await res.json();
-      if (data.content && data.content[0]) {
-        document.getElementById('outputText').textContent = data.content[0].text;
-        document.getElementById('outputText').style.display = 'block';
-        document.getElementById('watermarkOverlay').style.display = 'flex';
-        document.getElementById('downloadBar').style.display = 'block';
-        showStatus('✅ Document formatted!');
-      } else { showStatus('Something went wrong. Please try again.'); }
+
+if (!res.ok) {
+    showStatus(data.error || 'Formatting failed. Please try again.');
+} else if (data.content && data.content[0] && data.content[0].text) {
+    document.getElementById('outputText').textContent = data.content[0].text;
+    document.getElementById('outputText').style.display = 'block';
+    document.getElementById('watermarkOverlay').style.display = 'flex';
+    document.getElementById('downloadBar').style.display = 'block';
+    showStatus('✅ Document formatted!');
+} else {
+    showStatus('No formatted text was returned.');
+}
     } catch(err) { showStatus('Connection error. Please try again.'); }
     btn.disabled = false; btnText.innerHTML = '✨ Format My Document';
   }
