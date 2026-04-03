@@ -809,7 +809,11 @@ if (!res.ok) {
 } else {
     showStatus('No formatted text was returned.');
 }
-   } catch(err) { showStatus(err.name === 'AbortError' ? 'Formatter timed out. Please try again.' : 'Connection error. Please try again.'); }
+  } catch(err) {
+  showStatus(err.name === 'AbortError' ? 'Formatter timed out. Please try again.' : 'Connection error. Please try again.');
+} finally {
+  clearTimeout(timeoutId);
+} 
     btn.disabled = false; btnText.innerHTML = '✨ Format My Document';
   }
   function showUpsell() {
