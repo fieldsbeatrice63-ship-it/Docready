@@ -779,7 +779,7 @@ Go Business
     showStatus('FormatFlow is formatting your document...');
     try {
     const controller = new AbortController();
-const timeoutId = setTimeout(() => controller.abort(), 15000);
+let timeoutId = setTimeout(() => controller.abort(), 15000);
 
 const res = await fetch('https://dancing-griffin-99a31d.netlify.app/.netlify/functions/format', {
 signal: controller.signal, 
