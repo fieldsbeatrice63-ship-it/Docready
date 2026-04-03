@@ -203,44 +203,64 @@
   color: #ffffff;
   border-color: #0f766e;
 }
-/* MOBILE FIX */
+
+  /* SAFE MOBILE LAYOUT FIX */
 @media (max-width: 768px) {
 
-  .serve-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+  body {
+    overflow-x: hidden;
   }
 
-  .serve-card {
-    width: 100%;
-    padding: 16px;
+  nav {
+    padding: 12px 16px !important;
   }
 
-  .pricing-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  .nav-links {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 10px 14px !important;
+    justify-content: flex-start !important;
   }
 
-  .pricing-card {
-    width: 100%;
+  .nav-links a {
+    font-size: 0.95rem !important;
+    line-height: 1.2 !important;
   }
 
-  .btn {
-    width: 100%;
-    text-align: center;
+  #try-it {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
   }
 
-  h1, h2 {
-    text-align: center;
+  #userInput,
+  #outputPreview {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 240px !important;
+    box-sizing: border-box !important;
   }
 
-  .section-sub {
-    text-align: center;
-    padding: 0 10px;
+  .tool-actions {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
   }
-}
+
+  .tool-actions button,
+  .tool-actions .btn,
+  #downloadBar a,
+  #downloadBar button {
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  select,
+  input,
+  textarea {
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+}  
 </style>
  
 </head>
