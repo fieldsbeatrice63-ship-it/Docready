@@ -751,7 +751,7 @@ Go Business
   function toggleVoice() {
     const btn = document.getElementById('voiceBtn');
     if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) { showStatus('Voice input requires Chrome browser.'); return; }
-    if (isListening) { recognition.stop(); isListening = false; btn.classList.remove('listening'); btn.textContent = '🎤 Speak It'; return; }
+    if (isListening) { recognition.stop(); isListening = false; btn.classList.remove('listening'); btn.textContent = '🎤 Voice'; return; }
     const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
     recognition = new SR();
     const lang = document.getElementById('langSelect').value;
@@ -760,7 +760,7 @@ Go Business
     recognition.continuous = true; recognition.interimResults = true;
     recognition.onstart = () => { isListening = true; btn.classList.add('listening'); btn.textContent = '🛑 Stop Listening'; showStatus('Listening... speak now'); };
     recognition.onresult = (e) => { let t = ''; for (let i = e.resultIndex; i < e.results.length; i++) t += e.results[i][0].transcript; document.getElementById('userInput').value += t; };
-    recognition.onend = () => { isListening = false; btn.classList.remove('listening'); btn.textContent = '🎤 Speak It'; showStatus('Voice captured! Click Format to continue.'); };
+    recognition.onend = () => { isListening = false; btn.classList.remove('listening'); btn.textContent = '🎤 Voice'; showStatus('Voice captured! Click Format to continue.'); };
     recognition.start();
   }
   function showStatus(msg) { const el = document.getElementById('statusMsg'); el.textContent = msg; el.classList.add('show'); setTimeout(() => el.classList.remove('show'), 4000); }
