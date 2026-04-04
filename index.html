@@ -798,7 +798,9 @@ body: JSON.stringify({
         document.getElementById('downloadBar').style.display = 'block';
         showStatus('✅ Document formatted!');
       } else { showStatus('Something went wrong. Please try again.'); }
-    } catch(err) { showStatus('Connection error. Please try again.'); }
+   } catch(err) {
+  showStatus('Connection error. Please try again.');
+}
     btn.disabled = false; btnText.innerHTML = '✨ Format My Document';
   }
   function showUpsell() {
