@@ -927,7 +927,41 @@ document.getElementById('outputText').textContent = previewText;
     if (userInput) userInput.focus();
   }, 250);
 }
+929 }
 
+function renderUploadPreview(files) {
+  const preview = document.getElementById('uploadPreview');
+  if (!preview) return;
+
+  if (!files || !files.length) {
+    preview.style.display = 'none';
+    preview.innerHTML = '';
+    return;
+  }
+
+  preview.style.display = 'block';
+
+  const items = Array.from(files).map((file, index) => {
+    const isImage = file.type && file.type.startsWith('image/');
+    const sizeKB = Math.max(1, Math.round(file.size / 1024));
+
+    const thumb = isImage
+      ? `<img class="upload-preview-thumb" src="${URL.createObjectURL(file)}" />`
+      : `<div class="upload-preview-thumb" style="display:flex;align-items:center;justify-content:center;font-size:18px;">📄</div>`;
+
+    return `
+      <div class="upload-preview-item">
+        ${thumb}
+        <div class="upload-preview-file">
+          <div class="upload-preview-name">${file.name}</div>
+          <div class="upload-preview-meta">File ${index + 1} • ${sizeKB} KB</div>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  preview.innerHTML = `<div class="upload-preview-list">${items}</div>`;
+}
 function handleHeroUpload(event) {
 const currentToken = ++latestUploadToken;
   
