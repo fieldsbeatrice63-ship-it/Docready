@@ -815,7 +815,9 @@ body: JSON.stringify({
       });
       const data = await res.json();
       if (data.content && data.content[0]) {
-        document.getElementById('outputText').textContent = data.content[0].text;
+       const fullText = data.content[0].text;
+const previewText = fullText.substring(0, 500) + "\n\n--- Preview Limited ---\nUnlock full document after download.";
+document.getElementById('outputText').textContent = previewText;
         document.getElementById('outputText').style.display = 'block';
        
         document.getElementById('downloadBar').style.display = 'block';
