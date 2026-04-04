@@ -856,6 +856,9 @@ document.getElementById('outputText').textContent = previewText;
 }
 
 function handleHeroUpload(event) {
+
+  const currentToken = ++latestUploadToken;
+  
   const file = event.target.files && event.target.files[0];
   if (!file) return;
 
