@@ -817,7 +817,7 @@ body: JSON.stringify({
       if (data.content && data.content[0]) {
         document.getElementById('outputText').textContent = data.content[0].text;
         document.getElementById('outputText').style.display = 'block';
-        document.getElementById('watermarkOverlay').style.display = 'flex';
+       
         document.getElementById('downloadBar').style.display = 'block';
         showStatus('✅ Document formatted!');
       } else { showStatus('Something went wrong. Please try again.'); }
