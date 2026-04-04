@@ -858,22 +858,29 @@ function handleHeroUpload(event) {
   const file = event.target.files && event.target.files[0];
   if (!file) return;
 
-  const pasteTab = Array.from(document.querySelectorAll(".input-tab"))
-    .find(btn => btn.textContent.includes("Paste"));
-  if (pasteTab) pasteTab.click();
+  const reader = new FileReader();
 
-  const tryIt = document.getElementById("try-it");
-  if (tryIt) {
-    tryIt.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
+  reader.onload = function(e) {
+    const img = new Image();
+    img.src = e.target.result;
 
-  setTimeout(() => {
-    const userInput = document.getElementById("userInput");
-    if (userInput) {
-      userInput.value = "Uploaded file: " + file.name;
-      userInput.focus();
-    }
-  }, 250);
+    img.onload = function() {
+      showStatus("Reading image...");
+
+      Tesseract.recognize(
+        img,
+        'eng'
+      ).then(({ data: { text } }) => {
+        const userInput = document.getElementById('userInput');
+        userInput.value = text;
+        showStatus("Text extracted from screenshot. Click Format.");
+      }).catch(() => {
+        showStatus("Could not read screenshot. Try a clearer image.");
+      });
+    };
+  };
+
+  reader.readAsDataURL(file);
 }
 
 function startWithPaste() {
