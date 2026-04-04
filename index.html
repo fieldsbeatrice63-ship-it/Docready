@@ -874,14 +874,17 @@ function handleHeroUpload(event) {
       Tesseract.recognize(
         img,
         'eng'
-      ).then(({ data: { text } }) => {
-        if (currentToken !== latestUploadToken) return;
-        const userInput = document.getElementById('userInput');
-        userInput.value = text;
-        showStatus("Text extracted from screenshot. Click Format.");
-      }).catch(() => {
-        showStatus("Could not read screenshot. Try a clearer image.");
-      });
+     ).then(({ data: { text } }) => {
+
+  if (currentToken !== latestUploadToken) return;
+
+  const userInput = document.getElementById('userInput');
+  userInput.value = text;
+  showStatus("Text extracted from screenshot. Click Format.");
+
+}).catch(() => {
+  showStatus("Could not read screenshot. Try a clearer image.");
+});
     };
   };
 
