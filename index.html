@@ -331,6 +331,57 @@
     });
 
     setupVoiceInput();
+    <script>
+document.getElementById("rewriteBtn").onclick = async () => {
+  const output = document.getElementById("outputBox").value;
+
+  const res = await fetch("/api/generate-document", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      content: "Rewrite this more professionally:\n\n" + output
+    })
+  });
+
+  const data = await res.json();
+  document.getElementById("outputBox").value = data.output;
+};
+
+document.getElementById("simpleBtn").onclick = async () => {
+  const output = document.getElementById("outputBox").value;
+
+  const res = await fetch("/api/generate-document", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      content: "Rewrite this to be clear and simple:\n\n" + output
+    })
+  });
+
+  const data = await res.json();
+  document.getElementById("outputBox").value = data.output;
+};
+
+document.getElementById("strongBtn").onclick = async () => {
+  const output = document.getElementById("outputBox").value;
+
+  const res = await fetch("/api/generate-document", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      content: "Rewrite this to sound stronger and more confident:\n\n" + output
+    })
+  });
+
+  const data = await res.json();
+  document.getElementById("outputBox").value = data.output;
+};
+
+document.getElementById("clearBtn").onclick = () => {
+  document.getElementById("inputBox").value = "";
+  document.getElementById("outputBox").value = "";
+};
+
   </script>
 </body>
 </html>
