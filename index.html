@@ -379,7 +379,37 @@ document.getElementById("strongBtn").onclick = async () => {
   const data = await res.json();
   document.getElementById("outputBox").value = data.output;
 };
+document.getElementById("addDetailsBtn").onclick = async () => {
+  const existingOutput = document.getElementById("outputBox").value;
+  const newInput = document.getElementById("userInput").value;
 
+  if (!existingOutput) {
+    document.getElementById("outputBox").value = "Generate a document first before adding more details.";
+    return;
+  }
+
+  if (!newInput.trim()) {
+    document.getElementById("outputBox").value = "Please enter additional details to add.";
+    return;
+  }
+
+  const res = await fetch("https://format-flow-backend.onrender.com/api/generate-document", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      content:
+        "You are continuing and improving an existing professional document.\n\n" +
+        "CURRENT DOCUMENT:\n" +
+        existingOutput +
+        "\n\nNEW DETAILS TO ADD:\n" +
+        newInput +
+        "\n\nUpdate and refine the document so it remains professional, cohesive, and complete."
+    })
+  });
+
+  const data = await res.json();
+  document.getElementById("outputBox").value = data.output;
+};
 document.getElementById("clearBtn").onclick = () => {
   document.getElementById("userInput").value = "";
   document.getElementById("outputBox").value = "";
