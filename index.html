@@ -270,23 +270,54 @@
     });
 
     function setupVoiceInput() {
-      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
-      if (!SpeechRecognition) {
-        voiceStatus.textContent = "Voice input is not supported in this browser.";
-        voiceBtn.disabled = true;
-        stopVoiceBtn.disabled = true;
-        return;
-      }
+  if (!SpeechRecognition) {
+    voiceStatus.textContent = "Voice input is not supported in this browser.";
+    voiceBtn.disabled = true;
+    stopVoiceBtn.disabled = true;
+    return;
+  }
 
-      recognition = new SpeechRecognition();
-      recognition.continuous = true;
-      recognition.interimResults = true;
-      recognition.lang = "en-US";
+  recognition = new SpeechRecognition();
+  recognition.continuous = false;
+  recognition.interimResults = false;
+  recognition.lang = "en-US";
 
-      recognition.onstart = () => {
-        isListening = true;
-        voiceStatus.textContent = "Voice input is listening...";
+  recognition.onstart = () => {
+    isListening = true;
+    voiceStatus.textContent = "Listening...";
+  };
+
+  recognition.onresult = (event) => {
+    const transcript = event.results[0][0].transcript;
+    userInput.value = transcript;
+    voiceStatus.textContent = "Voice captured successfully.";
+  };
+
+  recognition.onerror = (event) => {
+    isListening = false;
+    voiceStatus.textContent = "Voice input error: " + event.error;
+  };
+
+  recognition.onend = () => {
+    isListening = false;
+    if (voiceStatus.textContent === "Listening...") {
+      voiceStatus.textContent = "Voice input stopped.";
+    }
+  };
+
+  voiceBtn.addEventListener("click", () => {
+    if (!recognition || isListening) return;
+    recognition.start();
+  });
+
+  stopVoiceBtn.addEventListener("click", () => {
+    if (recognition && isListening) {
+      recognition.stop();
+    }
+  });
+}
       };
 
       recognition.onresult = (event) => {
