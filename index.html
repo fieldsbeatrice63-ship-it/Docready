@@ -269,7 +269,17 @@
       }
     });
 
-    function setupVoiceInput() {
+   function setupVoiceInput() {
+  const userInput = document.getElementById("userInput");
+  const voiceBtn = document.getElementById("voiceBtn");
+  const stopVoiceBtn = document.getElementById("stopVoiceBtn");
+  const voiceStatus = document.getElementById("voiceStatus");
+
+  if (!userInput || !voiceBtn || !stopVoiceBtn || !voiceStatus) {
+    console.error("Voice input elements not found.");
+    return;
+  }
+
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
   if (!SpeechRecognition) {
@@ -279,7 +289,9 @@
     return;
   }
 
-  recognition = new SpeechRecognition();
+  let recognition = new SpeechRecognition();
+  let isListening = false;
+
   recognition.continuous = false;
   recognition.interimResults = false;
   recognition.lang = "en-US";
@@ -307,59 +319,18 @@
     }
   };
 
-  voiceBtn.addEventListener("click", () => {
-    if (!recognition || isListening) return;
-    recognition.start();
-  });
+  voiceBtn.onclick = () => {
+    if (!isListening) {
+      recognition.start();
+    }
+  };
 
-  stopVoiceBtn.addEventListener("click", () => {
-    if (recognition && isListening) {
+  stopVoiceBtn.onclick = () => {
+    if (isListening) {
       recognition.stop();
     }
-  });
+  };
 }
-      };
-
-      recognition.onresult = (event) => {
-        let finalText = "";
-        let interimText = "";
-
-        for (let i = event.resultIndex; i < event.results.length; i++) {
-          const transcript = event.results[i][0].transcript;
-          if (event.results[i].isFinal) {
-            finalText += transcript + " ";
-          } else {
-            interimText += transcript;
-          }
-        }
-
-        if (finalText) {
-          userInput.value = (userInput.value + " " + finalText).trim();
-        }
-
-        voiceStatus.textContent = interimText
-          ? "Listening: " + interimText
-          : "Voice input is listening...";
-      };
-
-      recognition.onerror = (event) => {
-        voiceStatus.textContent = "Voice error: " + event.error;
-      };
-
-      recognition.onend = () => {
-        isListening = false;
-        voiceStatus.textContent = "Voice input stopped.";
-      };
-    }
-
-    voiceBtn.addEventListener("click", () => {
-      if (!recognition) setupVoiceInput();
-      if (recognition && !isListening) recognition.start();
-    });
-
-    stopVoiceBtn.addEventListener("click", () => {
-      if (recognition && isListening) recognition.stop();
-    });
 
   
 setupVoiceInput();
