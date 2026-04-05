@@ -730,6 +730,7 @@ document.addEventListener("copy", (e) => {
 let isUnlocked = false;
     
  function applyTemplateToPreview(templateName) {
+   updateUnlockUI();
   const preview = document.querySelector(".output-preview");
   if (!preview) return;
 
