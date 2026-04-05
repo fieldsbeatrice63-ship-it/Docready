@@ -147,6 +147,52 @@
   -ms-user-select: none;
 }
     }
+
+  /*  DOCUMENT PREVIEW SHELL */
+.preview-shell {
+  position: relative;
+  background: #f4f6f8;
+  padding: 20px;
+  border-radius: 16px;
+  margin-top: 12px;
+}
+
+/*  ACTUAL DOCUMENT PAGE */
+.output-preview {
+  background: #ffffff;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 32px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  font-family: "Times New Roman", serif;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+/*  EMPTY STATE */
+.preview-empty {
+  color: #9aa3ab;
+  text-align: center;
+  font-style: italic;
+}
+
+/*  HIDE ORIGINAL TEXTAREA */
+.output-hidden {
+  display: none;
+}
+
+/*  WATERMARK */
+.preview-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-25deg);
+  font-size: 42px;
+  color: rgba(0,0,0,0.06);
+  pointer-events: none;
+  white-space: nowrap;
+}  
   </style>
 </head>
 <body>
