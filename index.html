@@ -407,6 +407,7 @@ document.getElementById("rewriteBtn").onclick = async () => {
 
   const data = await res.json();
   document.getElementById("outputBox").value = data.output;
+document.getElementById("outputPreview").innerText = data.output;
 };
 
 document.getElementById("simpleBtn").onclick = async () => {
@@ -422,6 +423,7 @@ document.getElementById("simpleBtn").onclick = async () => {
 
   const data = await res.json();
   document.getElementById("outputBox").value = data.output;
+document.getElementById("outputPreview").innerText = data.output;
 };
 
 document.getElementById("strongBtn").onclick = async () => {
@@ -437,6 +439,7 @@ document.getElementById("strongBtn").onclick = async () => {
 
   const data = await res.json();
   document.getElementById("outputBox").value = data.output;
+document.getElementById("outputPreview").innerText = data.output;
 };
 document.getElementById("addDetailsBtn").onclick = async () => {
   const existingOutput = document.getElementById("outputBox").value;
@@ -467,7 +470,8 @@ document.getElementById("addDetailsBtn").onclick = async () => {
   });
 
   const data = await res.json();
-  document.getElementById("outputBox").value = data.output;
+ document.getElementById("outputBox").value = data.output;
+document.getElementById("outputPreview").innerText = data.output;
 };
 document.getElementById("clearBtn").onclick = () => {
   document.getElementById("userInput").value = "";
