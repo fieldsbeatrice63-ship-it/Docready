@@ -224,7 +224,7 @@
         });
 
         const data = await res.json();
-        if (!response.ok) {
+        if (!res.ok) {
           throw new Error(data.error || "Could not process file.");
         }
 
@@ -254,7 +254,7 @@
 
        const data = await res.json();
 
-        if (!response.ok) {
+        if (!res.ok) {
           throw new Error(data.error || "Generation failed.");
         }
 
