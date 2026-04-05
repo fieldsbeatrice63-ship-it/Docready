@@ -218,7 +218,7 @@
       formData.append("file", file);
 
       try {
-        const response = await fetch("/api/parse-upload", {
+        const response = await fetch("https://format-flow-backend.onrender.com", {
           method: "POST",
           body: formData
         });
@@ -247,7 +247,7 @@
       outputBox.value = "Generating document...";
 
       try {
-        const response = await fetch("/api/generate-document", {
+        const response = await fetch("https://format-flow-backend.onrender.com", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ content })
