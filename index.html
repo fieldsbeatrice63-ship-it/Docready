@@ -744,7 +744,33 @@ let isUnlocked = false;
     preview.classList.add("template-" + templateName);
     selectedTemplate = templateName;
   }
+function updateUnlockUI() {
+  if (selectedTemplateLabel) {
+    const niceName =
+      selectedTemplate.charAt(0).toUpperCase() + selectedTemplate.slice(1);
+    selectedTemplateLabel.textContent = "Template: " + niceName;
+  }
 
+  if (unlockDocumentBtn) {
+    unlockDocumentBtn.href = stripeLinks[selectedTemplate] || "#";
+  }
+
+  if (isUnlocked) {
+    unlockStatus.textContent = "Unlocked";
+    unlockStatus.classList.remove("locked");
+    unlockStatus.classList.add("unlocked");
+
+    downloadPdfBtn.disabled = false;
+    exportDocxBtn.disabled = false;
+  } else {
+    unlockStatus.textContent = "Preview Protected";
+    unlockStatus.classList.remove("unlocked");
+    unlockStatus.classList.add("locked");
+
+    downloadPdfBtn.disabled = true;
+    exportDocxBtn.disabled = true;
+  }
+}
   function initializeTemplateGallery() {
     const cards = document.querySelectorAll(".template-card");
     if (!cards.length) return;
