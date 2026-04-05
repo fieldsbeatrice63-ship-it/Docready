@@ -335,7 +335,7 @@ setupVoiceInput();
 document.getElementById("rewriteBtn").onclick = async () => {
   const output = document.getElementById("outputBox").value;
 
-  const res = await fetch("/api/generate-document", {
+ const res = await fetch("https://format-flow-backend.onrender.com/api/generate-document", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -350,7 +350,7 @@ document.getElementById("rewriteBtn").onclick = async () => {
 document.getElementById("simpleBtn").onclick = async () => {
   const output = document.getElementById("outputBox").value;
 
-  const res = await fetch("/api/generate-document", {
+ const res = await fetch("https://format-flow-backend.onrender.com/api/generate-document", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -365,7 +365,7 @@ document.getElementById("simpleBtn").onclick = async () => {
 document.getElementById("strongBtn").onclick = async () => {
   const output = document.getElementById("outputBox").value;
 
-  const res = await fetch("/api/generate-document", {
+  const res = await fetch("https://format-flow-backend.onrender.com/api/generate-document", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
