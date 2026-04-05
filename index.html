@@ -720,7 +720,8 @@ document.addEventListener("copy", (e) => {
 });
    
   let selectedTemplate = "classic";
-
+let isUnlocked = false;
+    
   function applyTemplateToPreview(templateName) {
     const preview = document.querySelector(".output-preview");
     if (!preview) return;
