@@ -127,20 +127,13 @@ app.post("/api/generate-document", async (req, res) => {
       ]
     });
 
-   let output = response.output_text || "";
+  let output = response.output_text || "";
 
-// 🛡️ HALO SHIELD — ANTI-HALLUCINATION FILTER
+// 🛡️ HALO SHIELD — REFINED ANTI-HALLUCINATION FILTER
 
-const suspiciousPatterns = [
-  /\b\d{3}[-.\s]?\d{3}[-.\s]?\d{4}\b/g, // phone numbers
-  /\b\d{1,5}\s\w+\s\w+/g, // street addresses
-  /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/i // emails
-];
-
-suspiciousPatterns.forEach((pattern) => {
-  if (pattern.test(output)) {
-    output = output.replace(pattern, "[REDACTED]");
-  }
+output = output.replace(/\b\d{3}[-.\s]?\d{3}[-.\s]?\d{4}\b/g, "[Phone Number]");
+output = output.replace(/\b\d{1,5}\s[A-Za-z0-9.#'-]+\s(?:[A-Za-z0-9.#'-]+\s)?(?:Street|St|Avenue|Ave|Road|Rd|Boulevard|Blvd|Lane|Ln|Drive|Dr|Court|Ct|Way)\b/gi, "[Address]");
+output = output.replace(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/gi, "[Email Address]");
 });
     res.json({ output });
   } catch (error) {
