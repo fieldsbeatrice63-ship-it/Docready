@@ -378,8 +378,10 @@ document.getElementById("strongBtn").onclick = async () => {
 };
 
 document.getElementById("clearBtn").onclick = () => {
-  document.getElementById("inputBox").value = "";
+  document.getElementById("userInput").value = "";
   document.getElementById("outputBox").value = "";
+  document.getElementById("uploadStatus").textContent = "";
+  document.getElementById("voiceStatus").textContent = "";
 };
 
   </script>
