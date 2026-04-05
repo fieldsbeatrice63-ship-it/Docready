@@ -127,8 +127,21 @@ app.post("/api/generate-document", async (req, res) => {
       ]
     });
 
-    const output = response.output_text || "Your document could not be generated.";
+   let output = response.output_text || "";
 
+// 🛡️ HALO SHIELD — ANTI-HALLUCINATION FILTER
+
+const suspiciousPatterns = [
+  /\b\d{3}[-.\s]?\d{3}[-.\s]?\d{4}\b/g, // phone numbers
+  /\b\d{1,5}\s\w+\s\w+/g, // street addresses
+  /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/i // emails
+];
+
+suspiciousPatterns.forEach((pattern) => {
+  if (pattern.test(output)) {
+    output = output.replace(pattern, "[REDACTED]");
+  }
+});
     res.json({ output });
   } catch (error) {
     console.error("Generate error:", error);
