@@ -1853,7 +1853,17 @@ function updateUnlockUI() {
 
     applyTemplateToPreview(selectedTemplate);
   }
+document.getElementById("prevPageBtn")?.addEventListener("click", function () {
+  if (currentPreviewPage > 0) {
+    renderPreviewPage(currentPreviewPage - 1);
+  }
+});
 
+document.getElementById("nextPageBtn")?.addEventListener("click", function () {
+  if (currentPreviewPage < previewPages.length - 1) {
+    renderPreviewPage(currentPreviewPage + 1);
+  }
+});
   document.addEventListener("DOMContentLoaded", initializeTemplateGallery);
     
 downloadPdfBtn.addEventListener("click", () => {
