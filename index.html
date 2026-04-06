@@ -1453,6 +1453,96 @@ let previewPages = [];
 let currentPreviewPage = 0;
 let fullGeneratedDocument = "";
     
+    function splitDocumentIntoPages(text) {
+  const cleanText = (text || "").trim();
+  if (!cleanText) return [];
+
+  const PAGE_SIZE = 2200;
+  const pages = [];
+
+  let start = 0;
+  while (start < cleanText.length) {
+    let end = start + PAGE_SIZE;
+
+    if (end >= cleanText.length) {
+      pages.push(cleanText.slice(start).trim());
+      break;
+    }
+
+    let breakPoint = cleanText.lastIndexOf("\n\n", end);
+    if (breakPoint <= start) {
+      breakPoint = cleanText.lastIndexOf("\n", end);
+    }
+    if (breakPoint <= start) {
+      breakPoint = cleanText.lastIndexOf(". ", end);
+    }
+    if (breakPoint <= start) {
+      breakPoint = end;
+    }
+
+    pages.push(cleanText.slice(start, breakPoint).trim());
+    start = breakPoint;
+  }
+
+  return pages.filter(Boolean);
+}
+
+function updatePageIndicator() {
+  const controls = document.getElementById("previewPageControls");
+  const indicator = document.getElementById("pageIndicator");
+  const prevBtn = document.getElementById("prevPageBtn");
+  const nextBtn = document.getElementById("nextPageBtn");
+
+  if (!controls || !indicator || !prevBtn || !nextBtn) return;
+
+  if (!previewPages.length) {
+    controls.style.display = "none";
+    indicator.textContent = "Page 1 of 1";
+    prevBtn.disabled = true;
+    nextBtn.disabled = true;
+    return;
+  }
+
+  controls.style.display = previewPages.length > 1 ? "flex" : "none";
+  indicator.textContent = `Page ${currentPreviewPage + 1} of ${previewPages.length}`;
+  prevBtn.disabled = currentPreviewPage === 0;
+  nextBtn.disabled = currentPreviewPage === previewPages.length - 1;
+}
+
+function renderPreviewPage(pageIndex) {
+  const outputPreview = document.getElementById("outputPreview");
+  if (!outputPreview) return;
+
+  if (!previewPages.length) {
+    outputPreview.innerHTML = `<div class="preview-empty">Your generated document will appear here</div>`;
+    updatePageIndicator();
+    return;
+  }
+
+  currentPreviewPage = Math.max(0, Math.min(pageIndex, previewPages.length - 1));
+
+  const currentTemplateClass = outputPreview.className
+    .split(" ")
+    .filter(cls => cls.startsWith("template-"));
+
+  outputPreview.className = `output-preview ${currentTemplateClass.join(" ")}`.trim();
+
+  const pageText = previewPages[currentPreviewPage]
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/\n/g, "<br>");
+
+  outputPreview.innerHTML = pageText;
+  updatePageIndicator();
+}
+
+function setPagedPreview(text) {
+  fullGeneratedDocument = text || "";
+  previewPages = splitDocumentIntoPages(fullGeneratedDocument);
+  currentPreviewPage = 0;
+  renderPreviewPage(0);
+}
     fileUpload.addEventListener("change", async (event) => {
       const file = event.target.files[0];
       if (!file) return;
