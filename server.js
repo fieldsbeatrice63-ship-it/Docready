@@ -214,11 +214,13 @@ Apply the selected template style: ${selectedTemplate || "general-professional"}
 }
 app.post("/api/generate-document", async (req, res) => {
   try {
-    const { content } = req.body;
+    const { content, docType, template } = req.body;
 
     if (!content || !content.trim()) {
       return res.status(400).json({ error: "Content is required." });
     }
+
+    const formattingInstruction = getDocumentFormattingInstruction(docType, template);
 
     const response = await client.responses.create({
       model: "gpt-4.1",
@@ -229,7 +231,16 @@ app.post("/api/generate-document", async (req, res) => {
         },
         {
           role: "user",
-          content
+          content: `
+Document Type: ${docType || "general professional document"}
+Template: ${template || "general-professional"}
+
+Formatting Instructions:
+${formattingInstruction}
+
+Source Content:
+${content}
+`
         }
       ]
     });
