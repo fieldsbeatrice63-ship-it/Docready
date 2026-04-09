@@ -176,6 +176,16 @@ app.post("/api/rewrite-document", async (req, res) => {
     res.status(500).json({ error: "Rewrite failed." });
   }
 });
+
+    const output = response.output_text || "";
+
+    res.json({ output });
+
+  } catch (error) {
+    console.error("Rewrite error:", error);
+    res.status(500).json({ error: "Rewrite failed." });
+  }
+});
     let output = response.output_text || "";
 
     // 🛡️ HALO SHIELD — REFINED ANTI-HALLUCINATION FILTER
