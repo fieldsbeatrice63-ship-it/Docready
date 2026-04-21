@@ -274,6 +274,8 @@ Enhance clarity, improve flow, and refine sentence structure to ensure the docum
 Expand the document where appropriate to add depth, precision, and professional strength.
 
 Condense any unnecessary wording while keeping the message clear, impactful, and direct.
+- If a specific recipient name, company, bureau, landlord, lender, employer, or department is provided, replace generic salutations such as "To Whom It May Concern" with a more specific and professional salutation when appropriate.
+- Avoid generic openings when the document already contains enough recipient information to support a more direct greeting.
 
 IMPORTANT STRUCTURE RULES:
 - Preserve ALL header and identifying lines exactly as written.
@@ -283,6 +285,7 @@ IMPORTANT STRUCTURE RULES:
 - Return the FULL document, not just the rewritten portion.
 - Do not omit, replace, or relocate any personal or reference information.`;
 
+  
 } else if (type === "grammar") {
   instruction = `Correct all grammar, spelling, and sentence structure errors while maintaining a professional tone.
 
@@ -304,7 +307,7 @@ Remove unnecessary or repetitive wording while preserving the core message.
 
 Preserve all names, addresses, and formatting exactly as written.`;
 }
-
+    
     const response = await client.responses.create({
       model: "gpt-4.1",
       input: [
