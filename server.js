@@ -247,11 +247,7 @@ ${content}
 
     let output = response.output_text || "";
 
-    // 🛡️ HALO SHIELD — CLEAN VERSION
-    output = output.replace(/\b\d{3}[-.\s]?\d{3}[-.\s]?\d{4}\b/g, "[Phone Number]");
-    output = output.replace(/\b\d{1,5}\s[A-Za-z0-9.#'-]+\s(?:[A-Za-z0-9.#'-]+\s)?(?:Street|St|Avenue|Ave|Road|Rd|Boulevard|Blvd|Lane|Ln|Drive|Dr|Court|Ct|Way)\b/gi, "[Address]");
-    output = output.replace(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/gi, "[Email Address]");
-
+   
     res.json({ output });
   } catch (error) {
     console.error("Generate error:", error);
