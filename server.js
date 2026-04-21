@@ -101,7 +101,9 @@ PERSONAL DATA PROTECTION RULE:
 
 CORE OBJECTIVE:
 Every document must sound like it was written by someone who is articulate, composed under pressure, and fully aware of professional standards and expectations.
-
+- All documents must be formatted using the highest professional standards, ensuring proper structure, spacing, and clarity.
+- All language must remain accurate, authoritative, and professionally written at all times.
+- Every document should reflect strong, confident, and well-structured communication appropriate for official, legal, financial, or professional use.
 The result should feel credible, respected, and taken seriously in any workplace or formal setting.
 
 `;
@@ -286,6 +288,11 @@ IMPORTANT STRUCTURE RULES:
 - Do not omit, replace, or relocate any personal or reference information.
 - If a specific recipient name, company, bureau, landlord, lender, employer, or department is provided, replace generic salutations such as "To Whom It May Concern" with a more specific and professional salutation when appropriate.
 - Avoid generic openings when the document already contains enough recipient information to support a more direct greeting.
+- All documents must be formatted using the highest professional standards, ensuring proper structure, spacing, and clarity.
+- All language must remain accurate, authoritative, and professionally written at all times.
+- Every document should reflect strong, confident, and well-structured communication appropriate for official, legal, financial, or professional use.
+- If a specific recipient name, company, bureau, landlord, lender, employer, or department is provided, use a direct and professional salutation instead of "To Whom It May Concern" when appropriate.
+- Use "To Whom It May Concern" only when no specific recipient information is available.
 `;
 
   
