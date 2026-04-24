@@ -417,15 +417,16 @@ app.post("/api/parse-upload", upload.single("file"), async (req, res) => {
 });
 app.post("/api/send-verify", async (req, res) => {
   try {
-    const {
-      document,
-      docType,
-      senderName,
-      senderEmail,
-      recipientName,
-      recipientEmail,
-      deliveryNote
-    } = req.body;
+   const {
+  document,
+  docType,
+  senderName,
+  senderEmail,
+  recipientName,
+  recipientEmail,
+  deliveryNote,
+  deliveryType
+} = req.body;
 
     if (!document || !document.trim()) {
       return res.status(400).json({ error: "Document is required." });
@@ -448,6 +449,7 @@ app.post("/api/send-verify", async (req, res) => {
       recipientName: recipientName || "",
       recipientEmail: recipientEmail || "",
       deliveryNote: deliveryNote || ""
+      deliveryType: deliveryType || "standard",
     };
 
     // 🔁 FOR NOW: Just return receipt (no email yet)
