@@ -432,9 +432,7 @@ app.post("/api/send-verify", async (req, res) => {
       return res.status(400).json({ error: "Document is required." });
     }
 
-    if (!recipientEmail || !recipientEmail.trim()) {
-      return res.status(400).json({ error: "Recipient email is required." });
-    }
+   
 
     // 🔐 Generate Verification ID
     const verificationId = "VFY-" + Date.now();
