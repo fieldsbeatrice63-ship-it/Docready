@@ -466,6 +466,7 @@ if (destinationType && DESTINATION_MAP[destinationType]) {
 if (safeDeliveryType === "certified") {
   deliveryMethod = "certified";
 }
+     const verificationId = "VFY-" + Date.now();
     const deliveryJob = {
   deliveryId: "DLV-" + Date.now(),
   method: deliveryMethod,
@@ -487,20 +488,9 @@ if (safeDeliveryType === "certified") {
   deliveryNote: deliveryNote || "",
   status: "Delivery queued"
 };
-    const verificationId = "VFY-" + Date.now();
+   
 
-    const receipt = {
-      verificationId,
-      timestamp: new Date().toISOString(),
-      docType: docType || "general document",
-      senderName: senderName || "",
-      senderEmail: senderEmail || "",
-      recipientName: recipientName || "",
-      recipientEmail: recipientEmail || "",
-      deliveryNote: deliveryNote || "",
-      deliveryType: deliveryType || "standard"
-    };
-
+   
    return res.json({
   success: true,
   receipt,
