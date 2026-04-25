@@ -433,78 +433,85 @@ const DESTINATION_MAP = {
 };
 app.post("/api/send-verify", async (req, res) => {
   try {
-  const {
-  document,
-  docType,
-  senderName,
-  senderEmail,
-  recipientName,
-  recipientEmail,
-  deliveryNote,
-  deliveryType,
-  destinationType,   // NEW
-  customAddress      // NEW
-} = req.body;
+    const {
+      document,
+      docType,
+      senderName,
+      senderEmail,
+      recipientName,
+      recipientEmail,
+      deliveryNote,
+      deliveryType,
+      destinationType,
+      customAddress
+    } = req.body;
+
+    const safeDeliveryType = deliveryType || "standard";
+
     if (!document || !document.trim()) {
       return res.status(400).json({ error: "Document is required." });
     }
-let resolvedRecipient = "";
-let resolvedAddress = "";
 
-if (destinationType && DESTINATION_MAP[destinationType]) {
-  resolvedRecipient = DESTINATION_MAP[destinationType].name;
-  resolvedAddress = DESTINATION_MAP[destinationType].address;
-} else if (destinationType === "custom") {
-  resolvedRecipient = recipientName || "Custom Recipient";
-  resolvedAddress = customAddress || "";
-} else {
-  resolvedRecipient = recipientName || "Unknown Recipient";
-  resolvedAddress = "";
-}
+    let resolvedRecipient = "";
+    let resolvedAddress = "";
+
+    if (destinationType && DESTINATION_MAP[destinationType]) {
+      resolvedRecipient = DESTINATION_MAP[destinationType].name;
+      resolvedAddress = DESTINATION_MAP[destinationType].address;
+    } else if (destinationType === "custom") {
+      resolvedRecipient = recipientName || "Custom Recipient";
+      resolvedAddress = customAddress || "";
+    } else {
+      resolvedRecipient = recipientName || "Unknown Recipient";
+      resolvedAddress = "";
+    }
+
     let deliveryMethod = "standard";
 
-if (safeDeliveryType === "certified") {
-  deliveryMethod = "certified";
-}
-     const verificationId = "VFY-" + Date.now();
+    if (safeDeliveryType === "certified") {
+      deliveryMethod = "certified";
+    }
+
+    const verificationId = "VFY-" + Date.now();
+
     const deliveryJob = {
-  deliveryId: "DLV-" + Date.now(),
-  method: deliveryMethod,
-  recipient: resolvedRecipient,
-  address: resolvedAddress,
-  status: "queued",
-  createdAt: new Date().toISOString()
-};
+      deliveryId: "DLV-" + Date.now(),
+      method: deliveryMethod,
+      recipient: resolvedRecipient,
+      address: resolvedAddress,
+      status: "queued",
+      createdAt: new Date().toISOString()
+    };
+
     const receipt = {
-  verificationId,
-  deliveryId: deliveryJob.deliveryId,
-  timestamp: new Date().toISOString(),
-  docType: docType || "general document",
-  senderName: senderName || "",
-  senderEmail: senderEmail || "",
-  recipientName: resolvedRecipient,
-  recipientAddress: resolvedAddress,
-  deliveryType: deliveryMethod,
-  deliveryNote: deliveryNote || "",
-  status: "Delivery queued"
-};
-   
+      verificationId,
+      deliveryId: deliveryJob.deliveryId,
+      timestamp: new Date().toISOString(),
+      docType: docType || "general document",
+      senderName: senderName || "",
+      senderEmail: senderEmail || "",
+      recipientName: resolvedRecipient,
+      recipientAddress: resolvedAddress,
+      deliveryType: deliveryMethod,
+      deliveryNote: deliveryNote || "",
+      status: "Delivery queued"
+    };
 
-   
-   return res.json({
-  success: true,
-  receipt,
-  deliveryJob
+    return res.json({
+      success: true,
+      receipt,
+      deliveryJob
+    });
+
+  } catch (error) {
+    console.error("Send Verify Error:", error);
+
+    return res.status(500).json({
+      error: "Send Verify failed",
+      message: "An error occurred while processing delivery"
+    });
+  }
 });
-
-} catch (error) {
-  console.error("Send Verify Error:", error);
-
-  return res.status(500).json({
-    error: "Send Verify failed",
-    message: "An error occurred while processing delivery"
-  });
-}
 app.get("/health", (req, res) => {
   res.json({ ok: true });
 });
