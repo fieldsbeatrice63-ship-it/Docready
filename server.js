@@ -417,27 +417,23 @@ app.post("/api/parse-upload", upload.single("file"), async (req, res) => {
 });
 app.post("/api/send-verify", async (req, res) => {
   try {
-   const {
-  document,
-  docType,
-  senderName,
-  senderEmail,
-  recipientName,
-  recipientEmail,
-  deliveryNote,
-  deliveryType
-} = req.body;
+    const {
+      document,
+      docType,
+      senderName,
+      senderEmail,
+      recipientName,
+      recipientEmail,
+      deliveryNote,
+      deliveryType
+    } = req.body;
 
     if (!document || !document.trim()) {
       return res.status(400).json({ error: "Document is required." });
     }
 
-   
-
-    // 🔐 Generate Verification ID
     const verificationId = "VFY-" + Date.now();
 
-    // 🧾 Build receipt object
     const receipt = {
       verificationId,
       timestamp: new Date().toISOString(),
@@ -446,20 +442,18 @@ app.post("/api/send-verify", async (req, res) => {
       senderEmail: senderEmail || "",
       recipientName: recipientName || "",
       recipientEmail: recipientEmail || "",
-      deliveryNote: deliveryNote || ""
-      deliveryType: deliveryType || "standard",
+      deliveryNote: deliveryNote || "",
+      deliveryType: deliveryType || "standard"
     };
 
-    // 🔁 FOR NOW: Just return receipt (no email yet)
-    res.json({
+    return res.json({
       success: true,
-      message: "Verified delivery initiated.",
       receipt
     });
 
   } catch (error) {
-    console.error("Send Verify error:", error);
-    res.status(500).json({ error: "Server error sending verified document." });
+    console.error("Send Verify Error:", error);
+    return res.status(500).json({ error: "Server error" });
   }
 });
 app.get("/health", (req, res) => {
