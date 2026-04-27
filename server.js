@@ -572,9 +572,9 @@ app.post("/api/send-verify", async (req, res) => {
       deliveryNote: deliveryNote || "",
       status: "Delivery queued"
     };
-
-    try {
+try {
   if (lob) {
+   
       const recipientAddressForLob = parseSingleLineAddress(resolvedAddress);
 
       const senderAddressForLob = {
