@@ -612,11 +612,19 @@ try {
     deliveryJob.trackingLink = receipt.trackingLink;
   }
 } catch (lobError) {
-  console.error("LOB ERROR:", lobError);
+  const lobMessage =
+    lobError?.message ||
+    lobError?._response?.body?.error?.message ||
+    lobError?.response?.body?.error?.message ||
+    "Unknown Lob error";
+
+  console.error("LOB ERROR MESSAGE:", lobMessage);
+  console.error("LOB ERROR FULL:", lobError);
 
   receipt.deliveryStatus = "queued_without_lob";
   receipt.trackingLink = "";
   receipt.status = "Delivery queued - Lob pending";
+  receipt.lobError = lobMessage;
 
   deliveryJob.status = "queued_without_lob";
   deliveryJob.trackingLink = "";
