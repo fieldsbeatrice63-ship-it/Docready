@@ -572,45 +572,55 @@ app.post("/api/send-verify", async (req, res) => {
       deliveryNote: deliveryNote || "",
       status: "Delivery queued"
     };
-if (lob) {
-      const recipientAddressForLob = parseSingleLineAddress(resolvedAddress);
+try {
+  if (lob) {
+    const recipientAddressForLob = parseSingleLineAddress(resolvedAddress);
 
-      const senderAddressForLob = {
-        name: senderName || "FormatFlow",
-        address_line1: process.env.FORMATFLOW_RETURN_ADDRESS_LINE1 || "",
-        address_line2: process.env.FORMATFLOW_RETURN_ADDRESS_LINE2 || "",
-        address_city: process.env.FORMATFLOW_RETURN_ADDRESS_CITY || "",
-        address_state: process.env.FORMATFLOW_RETURN_ADDRESS_STATE || "",
-        address_zip: process.env.FORMATFLOW_RETURN_ADDRESS_ZIP || "",
-        address_country: "US"
-      };
+    const senderAddressForLob = {
+      name: senderName || "FormatFlow",
+      address_line1: process.env.FORMATFLOW_RETURN_ADDRESS_LINE1 || "",
+      address_line2: process.env.FORMATFLOW_RETURN_ADDRESS_LINE2 || "",
+      address_city: process.env.FORMATFLOW_RETURN_ADDRESS_CITY || "",
+      address_state: process.env.FORMATFLOW_RETURN_ADDRESS_STATE || "",
+      address_zip: process.env.FORMATFLOW_RETURN_ADDRESS_ZIP || "",
+      address_country: "US"
+    };
 
-      const lobLetter = await lob.letters.create({
-        description: `FormatFlow Send Verify - ${verificationId}`,
-        to: {
-          name: resolvedRecipient,
-          ...recipientAddressForLob
-        },
-        from: senderAddressForLob,
-        file: buildLobLetterHTML(document, docType),
-        color: false,
-        double_sided: false,
-        mail_type: "usps_first_class",
-        ...(deliveryMethod === "certified"
-          ? { extra_services: "certified" }
-          : {})
-      });
+    const lobLetter = await lob.letters.create({
+      description: `FormatFlow Send Verify - ${verificationId}`,
+      to: {
+        name: resolvedRecipient,
+        ...recipientAddressForLob
+      },
+      from: senderAddressForLob,
+      file: buildLobLetterHTML(document, docType),
+      color: false,
+      double_sided: false,
+      mail_type: "usps_first_class",
+      ...(deliveryMethod === "certified"
+        ? { extra_services: "certified" }
+        : {})
+    });
 
-      receipt.deliveryId = lobLetter.id || deliveryJob.deliveryId;
-      receipt.trackingLink = lobLetter.tracking_url || lobLetter.url || "";
-      receipt.deliveryStatus = lobLetter.status || "queued";
-      receipt.status = lobLetter.status || "Delivery queued";
+    receipt.deliveryId = lobLetter.id || deliveryJob.deliveryId;
+    receipt.trackingLink = lobLetter.tracking_url || lobLetter.url || "";
+    receipt.deliveryStatus = lobLetter.status || "queued";
+    receipt.status = lobLetter.status || "Delivery queued";
 
-      deliveryJob.deliveryId = receipt.deliveryId;
-      deliveryJob.status = receipt.deliveryStatus;
-      deliveryJob.trackingLink = receipt.trackingLink;
-    }
+    deliveryJob.deliveryId = receipt.deliveryId;
+    deliveryJob.status = receipt.deliveryStatus;
+    deliveryJob.trackingLink = receipt.trackingLink;
+  }
+} catch (lobError) {
+  console.error("LOB ERROR:", lobError);
 
+  receipt.deliveryStatus = "queued_without_lob";
+  receipt.trackingLink = "";
+  receipt.status = "Delivery queued - Lob pending";
+
+  deliveryJob.status = "queued_without_lob";
+  deliveryJob.trackingLink = "";
+}
      
     return res.json({
       success: true,
